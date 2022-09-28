@@ -1,6 +1,3 @@
-# Base de code du projet P6 - Parcours Front-end
+Ce dépôt contient le code pour le projet forké du P6
 
-## Démarrer le projet
-
-Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.
-
+GitHub Pages:
