@@ -1,0 +1,10 @@
+@import "../Utils/variables";
+@import "../Utils/mixins";
+
+.hide {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}

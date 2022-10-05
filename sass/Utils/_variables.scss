@@ -1,4 +1,6 @@
 //SASS Variables
+$body-bg-color: white;
+
 $buttons-color: white;
 $buttons-color--hover: black;
 $buttons-color--focus: black;
@@ -7,7 +9,6 @@ $buttons-bg-color: #901C1C;
 $buttons-bg-color--hover: #DB8876;
 $buttons-bg-color--focus: #DB8876;
 
-$buttons-border-radius: 5px;
 
 $text-color-primary: #D3573C;
 $text-color-secondary: #901C1C;
@@ -16,6 +17,8 @@ $text-color-quaternary: #757575;
 
 //CSS Variables
 :root {
+    //Color variables
+    --body-bg-color: #{$body-bg-color};
     --buttons-color:#{$buttons-color};
     --buttons-color--hover:#{$buttons-color--hover};
     --buttons-color--focus:#{$buttons-color--focus};
@@ -24,10 +27,12 @@ $text-color-quaternary: #757575;
     --buttons-bg-color--hover:#{$buttons-bg-color--hover};
     --buttons-bg-color--focus:#{$buttons-bg-color--focus};
 
-    --buttons-border-radius: $buttons-border-radius;
 
     --text-color-primary:#{$text-color-primary};
     --text-color-secondary:#{$text-color-secondary};
     --text-color-tertiary:#{$text-color-tertiary};
     --text-color-quaternary:#{$text-color-quaternary};
+
+    //Pixel variables
+    --buttons-border-radius: 5px;
 }

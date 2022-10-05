@@ -1,6 +1,7 @@
 //Dark theme
 @media (prefers-color-scheme: dark) {
     //SASS Variables
+    $body-bg-color: black;
     $buttons-color: white;
     $buttons-color--hover: black;
     $buttons-color--focus: black;
@@ -9,15 +10,14 @@
     $buttons-bg-color--hover: #DB8876;
     $buttons-bg-color--focus: #DB8876;
 
-    $buttons-border-radius: 5px;
-
     $text-color-primary: #D3573C;
-    $text-color-secondary: #901C1C;
-    $text-color-tertiary: black;
-    $text-color-quaternary: #757575;
+    $text-color-secondary: lighten(#901C1C, 20%);
+    $text-color-tertiary: white;
+    $text-color-quaternary: #8a8a8a;
 
     //CSS variables
     :root {
+        --body-bg-color: #{$body-bg-color};
         --buttons-color:#{$buttons-color};
         --buttons-color--hover:#{$buttons-color--hover};
         --buttons-color--focus:#{$buttons-color--focus};

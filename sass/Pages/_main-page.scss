@@ -1,1 +1,64 @@
-.main {}
+@import "../Utils/variables";
+@import "../Utils/mixins";
+
+.main {
+
+    margin-bottom: 50px;
+
+    &__cards-container {
+        width: 100%;
+
+        @include grid(2, 3, 35px);
+
+        @include mobile-only {
+            @include grid(6, 1, 35px)
+        }
+
+        @include tablet-only {
+            @include grid(3, 2, 35px)
+        }
+
+        @include laptop-only {
+            @include grid(3, 2, 35px)
+        }
+    }
+}
+
+.card {
+    @include center-flex-column;
+
+    &__image {
+        aspect-ratio: 1/1;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    &__text-container {
+        &>* {
+            text-align: center;
+        }
+    }
+
+    &__name {
+        color: var(--text-color-primary);
+        font-size: 36px;
+        @include center-flex-column();
+    }
+
+    &__location {
+        color: var(--text-color-secondary); //13
+        font-size: 13px;
+    }
+
+    &__slogan {
+        color: var(--text-color-tertiary); //10
+        font-size: 10px;
+    }
+
+    &__invoice {
+        color: var(--text-color-quaternary); //9
+        font-size: 9px;
+    }
+}

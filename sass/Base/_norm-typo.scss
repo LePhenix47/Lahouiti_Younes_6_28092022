@@ -1,3 +1,6 @@
+@import "../Utils/variables";
+@import "../Utils/mixins";
+
 //Normalization & typography
 *,
 ::before,
@@ -5,4 +8,23 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: var(--body-bg-color);
+    transition: background-color 250ms ease-in-out;
+    min-height: 100vh;
+    font-family: 'DM Sans', 'Courier New', Courier, monospace;
+    overflow-x: hidden;
+}
+
+button {
+    border: none;
+    font-family: 'DM Sans', 'Courier New', Courier, monospace;
+    padding: 19px 23px;
+    font-size: 18px;
 }

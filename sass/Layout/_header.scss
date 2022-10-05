@@ -1,1 +1,25 @@
-.header {}
+@import "../Utils/variables";
+@import "../Utils/mixins";
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 42px;
+    margin-bottom: 60px;
+    padding: 0 100px;
+
+    @include mobile-only {
+        @include center-flex-column(20px);
+    }
+
+    &__logo {
+        width: 200px;
+        height: 50px;
+    }
+
+    &__title {
+        font-size: 36px;
+        text-align: center;
+    }
+}
