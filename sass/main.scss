@@ -1,11 +1,22 @@
 //Variables
+@import "./Utils/variables";
+@import "./Utils/mixins";
 
 //Base
+@import "./Base/norm-typo";
 
 //Components
+@import "./Components/buttons";
 
 //Layout
+@import "./Layout/header";
+@import "./Layout/footer";
+
 
 //Pages
+@import "./Pages/main-page";
+@import "./Pages/photographer-page";
+
 
 //Themes
+@import "./Themes/dark-theme";
