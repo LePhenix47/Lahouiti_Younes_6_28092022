@@ -15,6 +15,13 @@ $text-color-secondary: #901C1C;
 $text-color-tertiary: black;
 $text-color-quaternary: #757575;
 
+$bg-color-primary: #D3573C;
+$bg-color-secondary: #901C1C;
+$bg-color-tertiary: black;
+$bg-color-quaternary: #757575;
+
+$bg-color-likes-invoice: #DB8876;
+
 //CSS Variables
 :root {
     //Color variables
@@ -32,6 +39,13 @@ $text-color-quaternary: #757575;
     --text-color-secondary:#{$text-color-secondary};
     --text-color-tertiary:#{$text-color-tertiary};
     --text-color-quaternary:#{$text-color-quaternary};
+
+    --bg-color-primary:#{$bg-color-primary};
+    --bg-color-secondary:#{$bg-color-secondary};
+    --bg-color-tertiary:#{$bg-color-tertiary};
+    --bg-color-quaternary:#{$bg-color-quaternary};
+
+    --bg-color-likes-invoice: #{$bg-color-likes-invoice};
 
     //Pixel variables
     --buttons-border-radius: 5px;

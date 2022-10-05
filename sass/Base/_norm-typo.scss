@@ -25,6 +25,13 @@ body {
 button {
     border: none;
     font-family: 'DM Sans', 'Courier New', Courier, monospace;
-    padding: 19px 23px;
-    font-size: 18px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+select {
+
+    font-family: 'DM Sans', 'Courier New', Courier, monospace;
 }

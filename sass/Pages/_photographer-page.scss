@@ -1,4 +1,57 @@
 @import "../Utils/variables";
 @import "../Utils/mixins";
 
-.main {}
+.main {
+    min-height: 100vh;
+
+    &__invoice-likes {
+        position: fixed;
+        bottom: 5px;
+        right: 5px;
+        background-color: var(--bg-color-likes-invoice);
+        height: 45px;
+        width: 375px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__profile-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgb(215, 215, 53); //à enlever
+    }
+}
+
+.profile {
+    &__card {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    &__name {
+        color: var(--text-color-primary);
+        font-size: 36px;
+        @include center-flex-column();
+    }
+
+    &__location {
+        color: var(--text-color-secondary);
+        font-size: 13px;
+    }
+
+    &__slogan {
+        color: var(--text-color-tertiary);
+        font-size: 10px;
+    }
+
+    &__image {
+        aspect-ratio: 1/1;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+    }
+}

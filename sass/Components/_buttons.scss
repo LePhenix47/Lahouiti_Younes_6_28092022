@@ -2,6 +2,8 @@
 @import "../Utils/mixins";
 
 .button {
+    padding: 19px 23px;
+    font-size: 18px;
     background-color: var(--buttons-bg-color);
     color: var(--buttons-color);
 
@@ -14,7 +16,6 @@
     &:focus {
         background-color: var(--buttons-bg-color--focus);
         color: var(--buttons-color--focus);
-
     }
 
     &--rounded {

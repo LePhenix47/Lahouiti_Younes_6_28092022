@@ -2,35 +2,31 @@
 @media (prefers-color-scheme: dark) {
     //SASS Variables
     $body-bg-color: black;
-    $buttons-color: white;
-    $buttons-color--hover: black;
-    $buttons-color--focus: black;
 
-    $buttons-bg-color: #901C1C;
-    $buttons-bg-color--hover: #DB8876;
-    $buttons-bg-color--focus: #DB8876;
-
-    $text-color-primary: #D3573C;
     $text-color-secondary: lighten(#901C1C, 20%);
     $text-color-tertiary: white;
     $text-color-quaternary: #8a8a8a;
 
+    $bg-color-primary: #D3573C;
+    $bg-color-secondary: lighten(#901C1C, 20%);
+    $bg-color-tertiary: white;
+    $bg-color-quaternary: #8a8a8a;
+
     //CSS variables
     :root {
+        //Color variables
         --body-bg-color: #{$body-bg-color};
-        --buttons-color:#{$buttons-color};
-        --buttons-color--hover:#{$buttons-color--hover};
-        --buttons-color--focus:#{$buttons-color--focus};
-
-        --buttons-bg-color:#{$buttons-bg-color};
-        --buttons-bg-color--hover:#{$buttons-bg-color--hover};
-        --buttons-bg-color--focus:#{$buttons-bg-color--focus};
-
-        --buttons-border-radius: $buttons-border-radius;
-
         --text-color-primary:#{$text-color-primary};
         --text-color-secondary:#{$text-color-secondary};
         --text-color-tertiary:#{$text-color-tertiary};
         --text-color-quaternary:#{$text-color-quaternary};
+
+
+        --bg-color-primary:#{$bg-color-primary};
+        --bg-color-secondary:#{$bg-color-secondary};
+        --bg-color-tertiary:#{$bg-color-tertiary};
+        --bg-color-quaternary:#{$bg-color-quaternary};
+
+        --bg-color-likes-invoice: #{$bg-color-likes-invoice};
     }
 }

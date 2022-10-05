@@ -26,19 +26,59 @@
   <link rel="icon" type="image/png" href="../assets/favicon.png" />
 
   <!-- JS -->
-  <script defer src="/js/pages/photographer.js"></script>
-  <script defer src="/js/utils/contactForm.js"></script>
+  <!-- <script defer src="../js/pages/photographer.js"></script>
+  <script defer src="../js/utils/contactForm.js"></script> -->
 
 </head>
 
 <body>
   <header class="header" role="banner">
-    <a href="../index.html" class="header__logo-wrapper" title="Lien vers la page d'acceuil"
-      alt="Lien vers la page d'accueil">
+    <a href="../index.html" class="header__logo-wrapper" title="Lien vers la page d'acceuil">
       <img src="../assets/images/logo.png" alt="Logo de bannière pour le site de FishEye" class="header__logo">
     </a>
   </header>
   <main class="main" role="main" aria-label="Contenu de la page principale">
+    <div class="main__invoice-likes">
+      <div class="main__likes">
+        <p>69 420 <i class="fa-solid fa-heart"></i></p>
+      </div>
+      <div class="main__invoice">
+        <p>[FACTURE EN €]</p>
+      </div>
+    </div>
+
+    <dialog class="main__contact-modal"></dialog>
+
+    <section class="main__profile-container">
+
+      <div class="profile__card">
+        <h1 class="profile__name">[NOM] [PRÉNOM]</h1>
+        <p class="profile__location">[LOCALISATION]</p>
+        <p class="profile__slogan">[SLOGAN]</p>
+      </div>
+      <div class="profile__contact">
+        <button type="button" class="button button--rounded">Contactez-moi</button>
+      </div>
+      <div class="profile__image-container">
+        <img
+          src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTkyODd8MHwxfHNlYXJjaHw0fHxwaG90b2dyYXBoZXJ8ZW58MHx8MXx8MTY2NDk1OTI1Ng&ixlib=rb-1.2.1&q=80&w=1080"
+          alt="" class="profile__image">
+      </div>
+    </section>
+
+    <section class="main__image-container">
+      <div class="images">
+        <div class="images__sorter">
+          <select name="orderby">
+            <option value="veuillez selectionner une option">---</option>
+            <option value="popularité">Popularité</option>
+            <option value="date">Date</option>
+            <option value="titre">Titre</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
 
   </main>
 </body>
