@@ -37,24 +37,29 @@
       <img src="../assets/images/logo.png" alt="Logo de bannière pour le site de FishEye" class="header__logo">
     </a>
   </header>
+
+
   <main class="main" role="main" aria-label="Contenu de la page principale">
     <div class="main__invoice-likes">
       <div class="main__likes">
-        <p>69 420 <i class="fa-solid fa-heart"></i></p>
+        <p aria-label="likes">69 420 <i class="fa-solid fa-heart"></i></p>
       </div>
       <div class="main__invoice">
-        <p>[FACTURE EN €]</p>
+        <p aria-label="facture">[FACTURE EN €]</p>
       </div>
     </div>
 
     <dialog class="main__contact-modal"></dialog>
 
+    <!--      -->
     <section class="main__profile-container">
 
-      <div class="profile__card">
-        <h1 class="profile__name">[NOM] [PRÉNOM]</h1>
-        <p class="profile__location">[LOCALISATION]</p>
-        <p class="profile__slogan">[SLOGAN]</p>
+      <div class="profile__card-container">
+        <div class="profile__card">
+          <h1 class="profile__name">[NOM] [PRÉNOM]</h1>
+          <p class="profile__location">[LOCALISATION]</p>
+          <p class="profile__slogan">[SLOGAN]</p>
+        </div>
       </div>
       <div class="profile__contact">
         <button type="button" class="button button--rounded">Contactez-moi</button>
@@ -65,17 +70,176 @@
           alt="" class="profile__image">
       </div>
     </section>
-
-    <section class="main__image-container">
+    <!--      -->
+    <section class="main__photographs-container">
+      <div class="images__sorter">
+        <label for="select" class="label">Trier par:</label>
+        <select name="orderby" class="select" id="select">
+          <option value="veuillez selectionner une option" class="option">---</option>
+          <option value="popularité" class="option">Popularité</option>
+          <option value="date" class="option">Date</option>
+          <option value="titre" class="option">Titre</option>
+        </select>
+      </div>
       <div class="images">
-        <div class="images__sorter">
-          <select name="orderby">
-            <option value="veuillez selectionner une option">---</option>
-            <option value="popularité">Popularité</option>
-            <option value="date">Date</option>
-            <option value="titre">Titre</option>
-          </select>
+
+        <template>
+          <div class="images__post">
+            <img class="images__image"
+              src="https://images.unsplash.com/photo-1601544829024-bc7f4c2213c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTkyODd8MHwxfHNlYXJjaHwzMXx8YmlyZHxlbnwwfHwxfHwxNjY0OTg0MDM5&ixlib=rb-1.2.1&q=80&w=1080"
+              alt="">
+            <div class="images__post-text">
+              <p class="images__post-description">Post description</p>
+              <button class="images__post-like-button">1 337 <i class="fa-solid fa-heart"></i></button>
+            </div>
+          </div>
+
+        </template>
+        <!--          -->
+        <div class="image__post-container">
+          <div class="images__post">
+            <a href="./photographer.html" title="[TITRE DU POST]">
+
+              <img class="images__image"
+                src="https://images.unsplash.com/photo-1601544829024-bc7f4c2213c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTkyODd8MHwxfHNlYXJjaHwzMXx8YmlyZHxlbnwwfHwxfHwxNjY0OTg0MDM5&ixlib=rb-1.2.1&q=80&w=1080"
+                alt="">
+            </a>
+            <div class="images__post-text">
+              <p class="images__post-description">Post description</p>
+              <button class="images__post-like-button">1 337 <i class="fa-solid fa-heart"></i></button>
+            </div>
+          </div>
         </div>
+        <div class="image__post-container">
+          <div class="images__post">
+            <a href="./photographer.html" title="[TITRE DU POST]">
+
+              <img class="images__image"
+                src="https://images.unsplash.com/photo-1601544829024-bc7f4c2213c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTkyODd8MHwxfHNlYXJjaHwzMXx8YmlyZHxlbnwwfHwxfHwxNjY0OTg0MDM5&ixlib=rb-1.2.1&q=80&w=1080"
+                alt="">
+            </a>
+            <div class="images__post-text">
+              <p class="images__post-description">Post description</p>
+              <button class="images__post-like-button">1 337 <i class="fa-solid fa-heart"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="image__post-container">
+          <div class="images__post">
+            <a href="./photographer.html" title="[TITRE DU POST]">
+
+              <img class="images__image"
+                src="https://images.unsplash.com/photo-1601544829024-bc7f4c2213c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTkyODd8MHwxfHNlYXJjaHwzMXx8YmlyZHxlbnwwfHwxfHwxNjY0OTg0MDM5&ixlib=rb-1.2.1&q=80&w=1080"
+                alt="">
+            </a>
+            <div class="images__post-text">
+              <p class="images__post-description">Post description</p>
+              <button class="images__post-like-button">1 337 <i class="fa-solid fa-heart"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="image__post-container">
+          <div class="images__post">
+            <a href="./photographer.html" title="[TITRE DU POST]">
+
+              <img class="images__image"
+                src="https://images.unsplash.com/photo-1601544829024-bc7f4c2213c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTkyODd8MHwxfHNlYXJjaHwzMXx8YmlyZHxlbnwwfHwxfHwxNjY0OTg0MDM5&ixlib=rb-1.2.1&q=80&w=1080"
+                alt="">
+            </a>
+            <div class="images__post-text">
+              <p class="images__post-description">Post description</p>
+              <button class="images__post-like-button">1 337 <i class="fa-solid fa-heart"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="image__post-container">
+          <div class="images__post">
+            <a href="./photographer.html" title="[TITRE DU POST]">
+
+              <img class="images__image"
+                src="https://images.unsplash.com/photo-1601544829024-bc7f4c2213c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTkyODd8MHwxfHNlYXJjaHwzMXx8YmlyZHxlbnwwfHwxfHwxNjY0OTg0MDM5&ixlib=rb-1.2.1&q=80&w=1080"
+                alt="">
+            </a>
+            <div class="images__post-text">
+              <p class="images__post-description">Post description</p>
+              <button class="images__post-like-button">1 337 <i class="fa-solid fa-heart"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="image__post-container">
+          <div class="images__post">
+            <a href="./photographer.html" title="[TITRE DU POST]">
+
+              <img class="images__image"
+                src="https://images.unsplash.com/photo-1601544829024-bc7f4c2213c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTkyODd8MHwxfHNlYXJjaHwzMXx8YmlyZHxlbnwwfHwxfHwxNjY0OTg0MDM5&ixlib=rb-1.2.1&q=80&w=1080"
+                alt="">
+            </a>
+            <div class="images__post-text">
+              <p class="images__post-description">Post description</p>
+              <button class="images__post-like-button">1 337 <i class="fa-solid fa-heart"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="image__post-container">
+          <div class="images__post">
+            <a href="./photographer.html" title="[TITRE DU POST]">
+
+              <img class="images__image"
+                src="https://images.unsplash.com/photo-1601544829024-bc7f4c2213c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTkyODd8MHwxfHNlYXJjaHwzMXx8YmlyZHxlbnwwfHwxfHwxNjY0OTg0MDM5&ixlib=rb-1.2.1&q=80&w=1080"
+                alt="">
+            </a>
+            <div class="images__post-text">
+              <p class="images__post-description">Post description</p>
+              <button class="images__post-like-button">1 337 <i class="fa-solid fa-heart"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="image__post-container">
+          <div class="images__post">
+            <a href="./photographer.html" title="[TITRE DU POST]">
+
+              <img class="images__image"
+                src="https://images.unsplash.com/photo-1601544829024-bc7f4c2213c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTkyODd8MHwxfHNlYXJjaHwzMXx8YmlyZHxlbnwwfHwxfHwxNjY0OTg0MDM5&ixlib=rb-1.2.1&q=80&w=1080"
+                alt="">
+            </a>
+            <div class="images__post-text">
+              <p class="images__post-description">Post description</p>
+              <button class="images__post-like-button">1 337 <i class="fa-solid fa-heart"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="image__post-container">
+          <div class="images__post">
+            <a href="./photographer.html" title="[TITRE DU POST]">
+
+              <img class="images__image"
+                src="https://images.unsplash.com/photo-1601544829024-bc7f4c2213c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTkyODd8MHwxfHNlYXJjaHwzMXx8YmlyZHxlbnwwfHwxfHwxNjY0OTg0MDM5&ixlib=rb-1.2.1&q=80&w=1080"
+                alt="">
+            </a>
+            <div class="images__post-text">
+              <p class="images__post-description">Post description</p>
+              <button class="images__post-like-button">1 337 <i class="fa-solid fa-heart"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="image__post-container">
+          <div class="images__post">
+            <a href="./photographer.html" title="[TITRE DU POST]">
+
+              <img class="images__image"
+                src="https://images.unsplash.com/photo-1601544829024-bc7f4c2213c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTkyODd8MHwxfHNlYXJjaHwzMXx8YmlyZHxlbnwwfHwxfHwxNjY0OTg0MDM5&ixlib=rb-1.2.1&q=80&w=1080"
+                alt="">
+            </a>
+            <div class="images__post-text">
+              <p class="images__post-description">Post description</p>
+              <button class="images__post-like-button">1 337 <i class="fa-solid fa-heart"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!--          -->
+
+
       </div>
     </section>
 

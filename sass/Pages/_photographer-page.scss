@@ -6,46 +6,88 @@
 
     &__invoice-likes {
         position: fixed;
-        bottom: 5px;
-        right: 5px;
+        bottom: 0px;
+        right: 35px;
+
         background-color: var(--bg-color-likes-invoice);
+        color: var(--text-color-invoice);
+
         height: 45px;
         width: 375px;
+
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        padding: 0 10px;
+
+        font-weight: 600;
+
+        border-radius: var(--buttons-border-radius) var(--buttons-border-radius) 0 0;
     }
 
     &__profile-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: rgb(215, 215, 53); //à enlever
+        @include grid(1, 3, 50px);
+
+        @include mobile-only {
+            @include grid(3, 1, 10px);
+        }
+
+        @include tablet-only {
+            @include grid(3, 1, 10px);
+        }
+    }
+
+    &__photographs-container {
+        margin: 0 4.5%;
     }
 }
 
 .profile {
+    &__card-container {
+        @include center-flex-column
+    }
+
     &__card {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
+        margin-left: 15%;
+
+        @include mobile-only {
+            @include center-flex-column;
+            margin-left: 0%
+        }
+
+        @include tablet-only {
+            @include center-flex-column;
+            margin-left: 0%
+        }
+    }
+
+    &__contact {
+        @include center-flex();
     }
 
     &__name {
         color: var(--text-color-primary);
-        font-size: 36px;
-        @include center-flex-column();
+        font-size: 44px;
     }
 
     &__location {
         color: var(--text-color-secondary);
-        font-size: 13px;
+        font-size: 24px;
     }
 
     &__slogan {
-        color: var(--text-color-tertiary);
-        font-size: 10px;
+        color: var(--text-color-slogan);
+        font-size: 18px;
     }
+
+    &__image-container {
+        @include center-flex;
+    }
+
 
     &__image {
         aspect-ratio: 1/1;
@@ -54,4 +96,63 @@
         object-fit: cover;
         object-position: center;
     }
+}
+
+.images {
+    @include grid(1, 3, 25px);
+
+    @include mobile-only {
+        @include grid(1, 1, 15px);
+    }
+
+    @include tablet-only {
+        @include grid(2, 2, 15px)
+    }
+
+    @include laptop-only {
+        @include grid(2, 2, 15px)
+    }
+
+    margin-top: 35px;
+
+    &__sorter {}
+
+    &__container {
+        @include center-flex-column;
+    }
+
+    &__post {
+        @include center-flex-column;
+        overflow: hidden;
+        width: 350px;
+
+        @include tablet-only {
+            max-width: 350px;
+        }
+    }
+
+    &__post-text {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 96%;
+    }
+
+    &__post-description {
+        color: var(--bg-color-secondary);
+    }
+
+    &__post-like-button {
+        color: var(--bg-color-secondary);
+        margin-right: 1px;
+    }
+
+    &__image {
+        width: 350px;
+        height: 300px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: var(--buttons-border-radius);
+    }
+
 }

@@ -24,6 +24,7 @@ body {
 
 button {
     border: none;
+    background-color: transparent;
     font-family: 'DM Sans', 'Courier New', Courier, monospace;
 
     &:hover {
@@ -32,6 +33,14 @@ button {
 }
 
 select {
-
+    border: none;
     font-family: 'DM Sans', 'Courier New', Courier, monospace;
+}
+
+label {
+
+    &:hover {
+        cursor: pointer;
+
+    }
 }

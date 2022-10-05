@@ -48,17 +48,17 @@
     }
 
     &__location {
-        color: var(--text-color-secondary); //13
+        color: var(--text-color-secondary);
         font-size: 13px;
     }
 
     &__slogan {
-        color: var(--text-color-tertiary); //10
+        color: var(--text-color-tertiary);
         font-size: 10px;
     }
 
     &__invoice {
-        color: var(--text-color-quaternary); //9
+        color: var(--text-color-quaternary);
         font-size: 9px;
     }
 }
