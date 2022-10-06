@@ -1,13 +1,17 @@
 {
-  "name": "p6",
+  "name": "P6 - FishEye, une plateforme accessible pour les photographes",
   "version": "1.0.0",
   "description": "Ce dépôt contient le code pour FishEye, une plateforme accessible pour les photographes",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "sass --watch ./sass/main.scss:./css/style.css --style compressed"
+    "sass": "sass --watch ./sass/main.scss:./css/style.css --style compressed",
+    "eslint": "npx eslint --init"
   },
   "keywords": [],
   "author": "Younes Lahouiti",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.24.0"
+  }
 }

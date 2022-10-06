@@ -294,6 +294,23 @@
         object-position: center;
     }
 
+    &__video {
+        border-radius: var(--buttons-border-radius);
+        width: 850px;
+        height: 650px;
+
+        @include mobile-only {
+            width: 275px;
+            height: 175px;
+        }
+
+        -o-object-fit: cover;
+
+        object-fit: cover;
+        -o-object-position: center;
+        object-position: center;
+    }
+
     &__post-description {
         position: absolute;
         bottom: 22px;

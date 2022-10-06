@@ -111,12 +111,9 @@
     </dialog>
 
 
-    <!--   Posts made by the photograph   -->
-
-
+    <!-- Template for the profile -->
     <template>
       <section class="main__profile-container">
-
         <div class="profile__card-container">
           <div class="profile__card">
             <h1 class="profile__name">[NOM] [PRÉNOM]</h1>
@@ -132,7 +129,10 @@
         </div>
       </section>
     </template>
-    <!--      -->
+
+
+
+    <!--   Posts made by the photograph   -->
     <section class="main__photographs-container">
       <div class="images__sorter">
         <label for="select" class="label">Trier par:</label>
@@ -144,13 +144,13 @@
         </select>
       </div>
       <div class="images">
-        <!-- Template for JS -->
+        <!-- Template for a unique post -->
         <template>
 
           <div class="images__post-container">
             <div class="images__post">
               <a href="./photographer.html" title="[TITRE DU POST]">
-
+                <video src="" poster="" class="images__video"></video>
                 <img class="images__image" src="[URL PHOTO]" alt="[DESCRIPTION TEXTUELLE ALTERNATIVE]">
               </a>
               <div class="images__post-text">
