@@ -31,7 +31,9 @@
         aspect-ratio: 1/1;
         height: 200px;
         border-radius: 50%;
+        -o-object-fit: cover;
         object-fit: cover;
+        -o-object-position: center;
         object-position: center;
     }
 

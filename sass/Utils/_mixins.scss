@@ -61,3 +61,11 @@ $breakpoints : ( //Breakpoints for the media queries
     grid-template-columns: repeat($columns, minmax($columns-space, 1fr));
     gap: $gap;
 }
+
+
+@mixin position-fix-center {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}

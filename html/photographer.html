@@ -49,8 +49,43 @@
       </div>
     </div>
 
-    <dialog class="main__contact-modal"></dialog>
+    <dialog class="contact__modal">
+      <div class="contact__modal-content">
+        <div class="contact__title-button">
+          <h1 class="contact__title">Contactez-moi <br />
+            [NOM] [PRÉNOM]
+          </h1>
+          <button type="button" class="contact__button-close-dialog"><i
+              class="fa-solid fa-xmark contact__button-close-dialog-icon"></i></button>
+        </div>
+        <form action="photographer.html" method="dialog" class="contact__form">
+          <fieldset class="contact__fieldset">
+            <legend class="contact__legend">Veuillez remplir ces champs</legend>
+            <section class="contact__fieldset-section">
+              <label for="last-name" class="contact__label">Nom</label>
+              <input type="text" id="last-name" class="contact__input" />
+            </section>
+            <section class="contact__fieldset-section">
+              <label for="first-name" class="contact__label">Prénom</label>
+              <input type="text" id="first-name" class="contact__input" />
+            </section>
+            <section class="contact__fieldset-section">
+              <label for="email" class="contact__label">Email</label>
+              <input type="email" id="email" class="contact__input" />
+            </section>
+            <section class="contact__fieldset-section">
+              <label for="message" class="contact__label">Votre message</label>
+              <textarea name="message" id="message" cols="30" rows="10" class="contact__text-area"></textarea>
+            </section>
+          </fieldset>
+          <button type="submit" class="button contact__submit-button">Envoyer</button>
+        </form>
+      </div>
+    </dialog>
 
+    <dialog class="main__lightbox-modal" open>
+      <h2>Modal WINDOW ofr the carousel</h2>
+    </dialog>
     <!--      -->
     <section class="main__profile-container">
 
@@ -84,19 +119,26 @@
       <div class="images">
 
         <template>
-          <div class="images__post">
-            <img class="images__image"
-              src="https://images.unsplash.com/photo-1601544829024-bc7f4c2213c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTkyODd8MHwxfHNlYXJjaHwzMXx8YmlyZHxlbnwwfHwxfHwxNjY0OTg0MDM5&ixlib=rb-1.2.1&q=80&w=1080"
-              alt="">
-            <div class="images__post-text">
-              <p class="images__post-description">Post description</p>
-              <button class="images__post-like-button">1 337 <i class="fa-solid fa-heart"></i></button>
+
+          <div class="images__post-container">
+            <div class="images__post">
+              <a href="./photographer.html" title="[TITRE DU POST]">
+
+                <img class="images__image"
+                  src="https://images.unsplash.com/photo-1601544829024-bc7f4c2213c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTkyODd8MHwxfHNlYXJjaHwzMXx8YmlyZHxlbnwwfHwxfHwxNjY0OTg0MDM5&ixlib=rb-1.2.1&q=80&w=1080"
+                  alt="">
+              </a>
+              <div class="images__post-text">
+                <p class="images__post-description">Post description</p>
+                <button class="images__post-like-button">1 337 <i class="fa-solid fa-heart"></i></button>
+              </div>
             </div>
           </div>
+
 
         </template>
         <!--          -->
-        <div class="image__post-container">
+        <div class="images__post-container">
           <div class="images__post">
             <a href="./photographer.html" title="[TITRE DU POST]">
 
@@ -110,7 +152,7 @@
             </div>
           </div>
         </div>
-        <div class="image__post-container">
+        <div class="images__post-container">
           <div class="images__post">
             <a href="./photographer.html" title="[TITRE DU POST]">
 
@@ -124,7 +166,7 @@
             </div>
           </div>
         </div>
-        <div class="image__post-container">
+        <div class="images__post-container">
           <div class="images__post">
             <a href="./photographer.html" title="[TITRE DU POST]">
 
@@ -138,7 +180,7 @@
             </div>
           </div>
         </div>
-        <div class="image__post-container">
+        <div class="images__post-container">
           <div class="images__post">
             <a href="./photographer.html" title="[TITRE DU POST]">
 
@@ -152,7 +194,7 @@
             </div>
           </div>
         </div>
-        <div class="image__post-container">
+        <div class="images__post-container">
           <div class="images__post">
             <a href="./photographer.html" title="[TITRE DU POST]">
 
@@ -166,7 +208,7 @@
             </div>
           </div>
         </div>
-        <div class="image__post-container">
+        <div class="images__post-container">
           <div class="images__post">
             <a href="./photographer.html" title="[TITRE DU POST]">
 
@@ -180,7 +222,7 @@
             </div>
           </div>
         </div>
-        <div class="image__post-container">
+        <div class="images__post-container">
           <div class="images__post">
             <a href="./photographer.html" title="[TITRE DU POST]">
 
@@ -194,7 +236,7 @@
             </div>
           </div>
         </div>
-        <div class="image__post-container">
+        <div class="images__post-container">
           <div class="images__post">
             <a href="./photographer.html" title="[TITRE DU POST]">
 
@@ -208,7 +250,9 @@
             </div>
           </div>
         </div>
-        <div class="image__post-container">
+
+
+        <div class="images__post-container">
           <div class="images__post">
             <a href="./photographer.html" title="[TITRE DU POST]">
 
@@ -222,20 +266,7 @@
             </div>
           </div>
         </div>
-        <div class="image__post-container">
-          <div class="images__post">
-            <a href="./photographer.html" title="[TITRE DU POST]">
 
-              <img class="images__image"
-                src="https://images.unsplash.com/photo-1601544829024-bc7f4c2213c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTkyODd8MHwxfHNlYXJjaHwzMXx8YmlyZHxlbnwwfHwxfHwxNjY0OTg0MDM5&ixlib=rb-1.2.1&q=80&w=1080"
-                alt="">
-            </a>
-            <div class="images__post-text">
-              <p class="images__post-description">Post description</p>
-              <button class="images__post-like-button">1 337 <i class="fa-solid fa-heart"></i></button>
-            </div>
-          </div>
-        </div>
 
         <!--          -->
 

@@ -17,6 +17,10 @@ $text-color-quaternary: #757575;
 //For the photographers page
 $text-color-slogan: #525252;
 $text-color-invoice: black;
+
+$dialog-backdrop-bg-color: #c4c4c466;
+$dialog-bg-color: #DB8876;
+$dialog-shadow-color: #0a0a0a4d;
 //
 
 $bg-color-primary: #D3573C;
@@ -47,6 +51,9 @@ $bg-color-likes-invoice: #DB8876;
     //For the photographers page
     --text-color-slogan:#{$text-color-slogan};
     --text-color-invoice:#{$text-color-invoice};
+    --dialog-backdrop-bg-color:#{$dialog-backdrop-bg-color};
+    --dialog-bg-color:#{$dialog-bg-color};
+    --dialog-shadow-color:#{$dialog-shadow-color};
     //
 
     --bg-color-primary:#{$bg-color-primary};
