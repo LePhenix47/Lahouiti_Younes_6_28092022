@@ -3,8 +3,8 @@ class PhotographerProfileTemplate {
     this.card = card;
   }
 
-  createProfileCard() {
-    const { name, city, country, tagline,  portrait } = this.card;
+  createProfileCard(container) {
+    const { name, city, country, tagline, portrait } = this.card;
     const photographersProfile = `
     <section class="main__profile-container">
 
@@ -22,11 +22,13 @@ class PhotographerProfileTemplate {
           <img src="./assets/images/Photographs Profile pictures/${portrait}" alt="Photo de profil du compte de: ${name}" class="profile__image">
         </div>
       </section>`;
+    container.innerHTML = photographersProfile;
+
+    return container;
   }
 
-  createPostsCard() {
-    const { id, photographersId, title, image, video, likes, date } =
-      this.card;
+  createPostsCard(container) {
+    const { id, photographersId, title, image, video, likes, date } = this.card;
     const photographersPosts = ` 
      <div class="images__post-container" data-post-id="${id}" data-photographers-id="${photographersId}">
             <div class="images__post">
@@ -42,5 +44,8 @@ class PhotographerProfileTemplate {
             </div>
           </div>
     `;
+    container.innerHTML = photographersPosts;
+
+    return container;
   }
 }

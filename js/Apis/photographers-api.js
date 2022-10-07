@@ -12,15 +12,14 @@ class Api {
         throw `An error has occured while attempting to retrieve data: ${response}`;
       }
       data = await response.json();
-      return data;
     } catch (apiError) {
       console.log(
         "%c" + apiError,
         "padding: 10px; font-size: 24px; background: crimson"
       );
       data = apiError;
-      return data;
     }
+    return data;
   }
 }
 

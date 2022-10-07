@@ -9,25 +9,25 @@ class Photographer {
     this.portrait = data.portrait;
   }
 
-  get name() {
+  get setName() {
     return this.name;
   }
-  get id() {
+  get setId() {
     return this.id;
   }
-  get city() {
+  get setCity() {
     return this.city;
   }
-  get country() {
+  get setCountry() {
     return this.country;
   }
-  get slogan() {
+  get setSlogan() {
     return this.tagline;
   }
-  get price() {
+  get setPrice() {
     return this.price;
   }
-  get profilePicture() {
+  get setProfilePicture() {
     return this.portrait;
   }
 }
