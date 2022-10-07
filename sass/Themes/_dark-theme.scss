@@ -16,6 +16,7 @@
     $scrollbar-bg-color: #424242;
     $scrollbar-thumb-bg-color: #686868;
     $scrollbar-thumb-bg-color--hover: #7b7b7b;
+    $scrollbar-thumb-bg-color--active: #a1a1a1;
     //
 
     //CSS variables
@@ -37,6 +38,7 @@
         --scrollbar-bg-color:#{$scrollbar-bg-color};
         --scrollbar-thumb-bg-color:#{$scrollbar-thumb-bg-color};
         --scrollbar-thumb-bg-color--hover:#{$scrollbar-thumb-bg-color--hover};
+        --scrollbar-thumb-bg-color--active:#{$scrollbar-thumb-bg-color--active};
         //
 
         --bg-color-likes-invoice: #{$bg-color-likes-invoice};
