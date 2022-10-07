@@ -30,9 +30,4 @@ class Photographer {
   get profilePicture() {
     return this.portrait;
   }
-
-  //Builder
-  build() {
-    return this;
-  }
 }

@@ -4,7 +4,7 @@ class PhotographerProfileTemplate {
   }
 
   createProfileCard() {
-    const { name, id, city, country, tagline, price, portrait } = this.card;
+    const { name, city, country, tagline,  portrait } = this.card;
     const photographersProfile = `
     <section class="main__profile-container">
 
@@ -25,7 +25,7 @@ class PhotographerProfileTemplate {
   }
 
   createPostsCard() {
-    const { id, photographersId, title, image, video, likes, date, price } =
+    const { id, photographersId, title, image, video, likes, date } =
       this.card;
     const photographersPosts = ` 
      <div class="images__post-container" data-post-id="${id}" data-photographers-id="${photographersId}">
