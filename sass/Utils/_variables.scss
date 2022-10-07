@@ -29,6 +29,12 @@ $bg-color-secondary: #901C1C;
 $bg-color-tertiary: black;
 $bg-color-quaternary: #757575;
 
+//For the scrollbar
+$scrollbar-bg-color: #f1f1f1;
+$scrollbar-thumb-bg-color: #c1c1c1;
+$scrollbar-thumb-bg-color--hover: #a8a8a8;
+//
+
 $bg-color-likes-invoice: #DB8876;
 
 //CSS Variables
@@ -62,6 +68,12 @@ $bg-color-likes-invoice: #DB8876;
     --bg-color-secondary:#{$bg-color-secondary};
     --bg-color-tertiary:#{$bg-color-tertiary};
     --bg-color-quaternary:#{$bg-color-quaternary};
+
+    //For the scrollbar
+    --scrollbar-bg-color:#{$scrollbar-bg-color};
+    --scrollbar-thumb-bg-color:#{$scrollbar-thumb-bg-color};
+    --scrollbar-thumb-bg-color--hover:#{$scrollbar-thumb-bg-color--hover};
+    //
 
     --bg-color-likes-invoice: #{$bg-color-likes-invoice};
 
