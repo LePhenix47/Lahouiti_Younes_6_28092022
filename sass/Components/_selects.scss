@@ -2,8 +2,19 @@
 @import "../Utils/mixins";
 
 .select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
     background-color: var(--buttons-bg-color);
     color: var(--buttons-color);
-    padding: 5px 23px 10px 23px;
-    appearance: none;
+
+    font-size: 16px;
+    text-align: left;
+
+    padding: 14px;
+
+    width: 170px;
+
+    border-radius: var(--buttons-border-radius);
 }

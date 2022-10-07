@@ -26,8 +26,9 @@
   <link rel="icon" type="image/png" href="../assets/favicon.png" />
 
   <!-- JS -->
-  <script defer src="../js/pages/photographer.js"></script>
-  <script defer src="../js/utils/contactForm.js"></script>
+  <script defer src="../js/Apis/photographers-api.js"></script>
+  <script defer src="../js/Templates/photographer-template.js"></script>
+  <script defer src="../js/Pages/photographer.js"></script>
 
 </head>
 
@@ -136,14 +137,42 @@
     <section class="main__photographs-container">
       <div class="images__sorter">
         <label for="select" class="label">Trier par:</label>
-        <select name="orderby" class="select" id="select">
-          <option value="veuillez selectionner une option" class="option">---</option>
-          <option value="popularité" class="option">Popularité</option>
-          <option value="date" class="option">Date</option>
-          <option value="titre" class="option">Titre</option>
-        </select>
+        <div class="images__select-container">
+
+          <div class="dropdown-menu__icon-container">
+            <i class="fa-solid fa-chevron-up dropdown-menu__icon"></i>
+          </div>
+          <select name="orderby" class="select select--mobile-only" id="select">
+            <option value="popularité" class="option">Popularité</option>
+            <option value="date" class="option">Date</option>
+            <option value="titre" class="option">Titre</option>
+          </select>
+
+          <div class="dropdown-menu">
+            <ul class="dropdown-menu__list">
+              <li class="dropdown-menu__list-item">Date</li>
+              <li class="dropdown-menu__list-item">Titre</li>
+            </ul>
+          </div>
+
+
+          <!-- Template for the dropdown menu -->
+          <template>
+
+            <div class="dropdown-menu">
+              <ul class="dropdown-menu__list">
+                <li class="dropdown-menu__list-item">Popularité</li>
+                <li class="dropdown-menu__list-item">Date</li>
+                <li class="dropdown-menu__list-item">Titre</li>
+              </ul>
+            </div>
+          </template>
+        </div>
+
       </div>
+
       <div class="images">
+
         <!-- Template for a unique post -->
         <template>
 

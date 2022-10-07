@@ -7,15 +7,20 @@ class Api {
     let data = undefined;
     try {
       let response = await fetch(this.url);
-      data = await response.json();
-      if (data === undefined) {
-        throw "Data is undefined";
+
+      if (!response.ok) {
+        throw `An error has occured while attempting to retrieve data: ${response}`;
       }
+      data = await response.json();
+      return data;
     } catch (apiError) {
-      console.error(apiError);
+      console.log(
+        "%c" + apiError,
+        "padding: 10px; font-size: 24px; background: crimson"
+      );
       data = apiError;
+      return data;
     }
-    return data;
   }
 }
 

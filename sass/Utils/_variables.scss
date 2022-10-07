@@ -36,6 +36,8 @@ $scrollbar-thumb-bg-color--hover: #a8a8a8;
 $scrollbar-thumb-bg-color--active: #787878;
 //
 
+$odd-card-bg-color: #f1f1f1;
+
 $bg-color-likes-invoice: #DB8876;
 
 //CSS Variables
@@ -76,6 +78,8 @@ $bg-color-likes-invoice: #DB8876;
     --scrollbar-thumb-bg-color--hover:#{$scrollbar-thumb-bg-color--hover};
     --scrollbar-thumb-bg-color--active:#{$scrollbar-thumb-bg-color--active};
     //
+
+    --odd-card-bg-color: #{$odd-card-bg-color};
 
     --bg-color-likes-invoice: #{$bg-color-likes-invoice};
 

@@ -3,7 +3,7 @@
 
 .main {
 
-    margin-bottom: 50px;
+    margin-bottom: 25px;
 
     &__cards-container {
         width: 100%;
@@ -11,7 +11,8 @@
         @include grid(2, 3, 35px);
 
         @include mobile-only {
-            @include grid(6, 1, 35px)
+            @include grid(6, 1, 35px);
+
         }
 
         @include tablet-only {
@@ -26,6 +27,14 @@
 
 .card {
     @include center-flex-column;
+
+    @include mobile-only {
+        padding: 10px 0;
+
+        &:nth-child(odd) {
+            background-color: var(--odd-card-bg-color);
+        }
+    }
 
     &__image {
         aspect-ratio: 1/1;
@@ -51,16 +60,16 @@
 
     &__location {
         color: var(--text-color-secondary);
-        font-size: 13px;
+        font-size: 18px;
     }
 
     &__slogan {
         color: var(--text-color-tertiary);
-        font-size: 10px;
+        font-size: 14px;
     }
 
     &__invoice {
         color: var(--text-color-quaternary);
-        font-size: 9px;
+        font-size: 12px;
     }
 }
