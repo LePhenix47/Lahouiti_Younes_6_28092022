@@ -541,6 +541,7 @@
 
     &__icon {
         font-size: 14px;
+        color: var(--buttons-color);
     }
 
 
@@ -557,6 +558,11 @@
         width: 88%;
         text-align: left;
         border-top: 2px solid white;
+        color: var(--buttons-color);
+
+        &:hover {
+            background-color: blue;
+        }
     }
 
 }
