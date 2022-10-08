@@ -10,8 +10,8 @@
     padding: 0;
 }
 
-a {
-    text-decoration: none;
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -20,6 +20,10 @@ body {
     min-height: 100vh;
     font-family: 'DM Sans', 'Courier New', Courier, monospace;
     overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
 }
 
 button {
