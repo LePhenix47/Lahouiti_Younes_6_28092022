@@ -295,12 +295,12 @@
 
     &__image {
         border-radius: var(--buttons-border-radius);
-        width: 850px;
-        height: 650px;
+        max-width: 80%;
+        max-height: 650px;
 
         @include mobile-only {
-            width: 275px;
-            height: 175px;
+            width: 70%;
+            height: 80%;
         }
 
         -o-object-fit: cover;
@@ -312,12 +312,12 @@
 
     &__video {
         border-radius: var(--buttons-border-radius);
-        width: 850px;
-        height: 650px;
+        max-width: 80%;
+        max-height: 650px;
 
         @include mobile-only {
-            width: 275px;
-            height: 175px;
+            width: 70%;
+            height: 80%;
         }
 
         -o-object-fit: cover;
