@@ -12,8 +12,8 @@ class PhotographerProfileTemplate {
         <div class="profile__card-container">
           <div class="profile__card">
             <h1 class="profile__name">${name}</h1>
-            <p class="profile__location">${city}, ${country}</p>
-            <p class="profile__slogan">${tagline}</p>
+            <h2 class="profile__location">${city}, ${country}</h2>
+            <h3 class="profile__slogan">${tagline}</h3>
           </div>
         </div>
         <div class="profile__contact">
@@ -37,10 +37,10 @@ class PhotographerProfileTemplate {
 
       if (image !== undefined) {
         postTemplate = `
-            <div class="images__post-container" data-post-id="${id}" data-photographers-id="${photographerId}">
+            <div class="images__post-container" data-post-id="${id}" data-photographers-id="${photographerId}" data-publishing-date="${date}">
                   <div class="images__post">
                     <a href="#" title="${title}">
-                      <img class="images__image" src="../assets/images/Posts photos/${image}" alt="'${title}' fait le ${date}" loading="lazy">
+                      <img class="images__image" src="../assets/images/Posts photos/${image}" alt="'${title}' fait le ${date}"/>
                     </a>
                     <div class="images__post-text">
                       <p class="images__post-description">${title}</p>
@@ -54,7 +54,7 @@ class PhotographerProfileTemplate {
             <div class="images__post-container" data-post-id="${id}" data-photographers-id="${photographerId}">
                   <div class="images__post">
                     <a href="#" title="${title}">
-                <video src="../assets/images/Posts photos/${video}" class="images__image" ></video>
+                <video src="../assets/images/Posts photos/${video}" class="images__video" data-post-id="${id}" data-photographers-id="${photographerId}" data-publishing-date="${date}></video>
                     </a>
                     <div class="images__post-text">
                       <p class="images__post-description">${title}</p>

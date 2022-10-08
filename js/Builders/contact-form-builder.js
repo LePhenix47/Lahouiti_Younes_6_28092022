@@ -1,23 +1,22 @@
 class ContactFormBuilder {
   constructor() {}
 
-  set firstName(firstName) {
+  setFirstName(firstName) {
     this.firstName = firstName;
+    return this;
   }
-  set lastName(lastName) {
+  setLastName(lastName) {
     this.lastName = lastName;
+    return this;
   }
 
-  set email(email) {
+  setEmail(email) {
     this.email = email;
+    return this;
   }
 
-  set message(message) {
+  setMessage(message) {
     this.message = message;
-  }
-
-  //Builder
-  build() {
     return this;
   }
 }

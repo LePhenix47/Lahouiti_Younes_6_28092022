@@ -7,6 +7,8 @@
     $text-color-tertiary: white;
     $text-color-quaternary: #8a8a8a;
 
+    $text-color-slogan: #adadad;
+
     $bg-color-primary: #D3573C;
     $bg-color-secondary: lighten(#901C1C, 20%);
     $bg-color-tertiary: white;
@@ -24,10 +26,13 @@
     :root {
         //Color variables
         --body-bg-color: #{$body-bg-color};
+
         --text-color-primary:#{$text-color-primary};
         --text-color-secondary:#{$text-color-secondary};
         --text-color-tertiary:#{$text-color-tertiary};
         --text-color-quaternary:#{$text-color-quaternary};
+
+        --text-color-slogan:#{$text-color-slogan};
 
 
         --bg-color-primary:#{$bg-color-primary};

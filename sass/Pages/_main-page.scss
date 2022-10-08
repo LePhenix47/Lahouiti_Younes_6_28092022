@@ -5,6 +5,18 @@
 
     margin-bottom: 25px;
 
+    @include mobile-only {
+        margin-bottom: 50px;
+    }
+
+    @include tablet-only {
+        margin-bottom: 50px;
+    }
+
+    @include laptop-only {
+        margin-bottom: 50px;
+    }
+
     &__cards-container {
         width: 100%;
 
