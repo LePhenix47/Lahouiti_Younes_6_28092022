@@ -44,12 +44,13 @@
 
 
   <main class="main" role="main" aria-label="Contenu de la page principale">
+    <!--   Sticky bar for the price and the amount of likes   -->
     <div class="main__invoice-likes">
       <div class="main__likes">
-        <p aria-label="likes">69 420 <i class="fa-solid fa-heart"></i></p>
+        <p aria-label="likes" class="main__amount-of-likes">69 420 <i class="fa-solid fa-heart"></i></p>
       </div>
       <div class="main__invoice">
-        <p aria-label="facture">[FACTURE EN €]</p>
+        <p aria-label="facture" class="main__price">[FACTURE EN €]</p>
       </div>
     </div>
     <!-- Modal window to contact the photographer -->
@@ -106,7 +107,8 @@
 
         <div class="lightbox__image-post-description">
           <div class="lightbox__image-container">
-            <img src="[URL DE L'IMAGE]" alt="[DESCRIPTION TEXTUELLE ALTERNATIVE]" class="lightbox__image">
+            <img src="
+            " alt="[DESCRIPTION TEXTUELLE ALTERNATIVE]" class="lightbox__image">
           </div>
           <p class="lightbox__post-description">Post description</p>
         </div>
@@ -117,9 +119,7 @@
 
     <!-- Template for the profile -->
 
-    <div class="main__profile-wrapper">
-
-    </div>
+    <div class="main__profile-wrapper"></div>
     <template>
       <section class="main__profile-container">
         <div class="profile__card-container">
