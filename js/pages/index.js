@@ -22,6 +22,6 @@ let cardsContainer = document.querySelector(".main__cards-container");
 
 launchApp.then((data) => {
   const { photographers, media } = data;
-  console.log(photographers);
+  console.table(photographers);
   IndexApp.init(photographers, cardsContainer);
 });

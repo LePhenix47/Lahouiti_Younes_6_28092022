@@ -1,7 +1,7 @@
-function getParameter(parameterName) {
+function getParameter(nameOfParameter) {
   let parameters = new URLSearchParams(window.location.search);
-  if (parameters.has(parameterName)) {
-    return parameters.get(parameterName);
+  if (parameters.has(nameOfParameter)) {
+    return parameters.get(nameOfParameter);
   }
-  return `The parameter ${parameterName} HASN'T been found!`;
+  return `The parameter ${nameOfParameter} HASN'T been found!`;
 }

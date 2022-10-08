@@ -28,6 +28,7 @@
   <!-- JS -->
   <script defer src="../js/Apis/photographers-api.js"></script>
   <script defer src="../js/Utils/modal-functions.js"></script>
+  <script defer src="../js/Utils/get-parameters.js"></script>
   <script defer src="../js/Builders/contact-form-builder.js"></script>
   <script defer src="../js/Templates/photographer-template.js"></script>
   <script defer src="../js/Pages/photographer.js"></script>
@@ -115,6 +116,10 @@
 
 
     <!-- Template for the profile -->
+
+    <div class="main__profile-wrapper">
+
+    </div>
     <template>
       <section class="main__profile-container">
         <div class="profile__card-container">
@@ -142,7 +147,7 @@
         <div class="images__select-container">
 
           <div class="dropdown-menu__icon-container">
-            <i class="fa-solid fa-chevron-up dropdown-menu__icon"></i>
+            <i class="fa-solid fa-chevron-down dropdown-menu__icon"></i>
           </div>
           <select name="orderby" class="select select--mobile-only" id="select">
             <option value="popularité" class="option">Popularité</option>

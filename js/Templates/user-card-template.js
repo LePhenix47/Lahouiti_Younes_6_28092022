@@ -5,7 +5,7 @@ class UserCardTemplate {
 
   createCards() {
     let photographerTemplate = "";
-    let photographerCard = "";
+    let photographerCards = "";
 
     for (let card of this.cards) {
       const { name, id, city, country, tagline, price, portrait } = card;
@@ -26,9 +26,9 @@ class UserCardTemplate {
             </div>
         </section>`;
 
-      photographerCard += photographerTemplate;
+      photographerCards += photographerTemplate;
     }
 
-    return photographerCard;
+    return photographerCards;
   }
 }
