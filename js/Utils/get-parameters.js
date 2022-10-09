@@ -1,4 +1,4 @@
-function getParameter(nameOfParameter) {
+function getUrlParameter(nameOfParameter) {
   let parameters = new URLSearchParams(window.location.search);
   if (parameters.has(nameOfParameter)) {
     return parameters.get(nameOfParameter);

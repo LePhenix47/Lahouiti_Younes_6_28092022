@@ -48,6 +48,32 @@ class PhotographerApp {
     return photographersPostsArray;
   }
 
+  static sortPostsByUser(arrayOfPosts, sortProperty) {
+    let sortedArray = [];
+    switch (sortProperty) {
+      case "title": {
+        sortedArray = arrayOfPosts.sort((post1, post2) => {
+          return post2.title - post1.title;
+        });
+        break;
+      }
+      case "likes": {
+        sortedArray = arrayOfPosts.sort((post1, post2) => {
+          return post2.likes - post1.likes;
+        });
+        break;
+      }
+      case "date": {
+        sortedArray = arrayOfPosts.sort((post1, post2) => {
+          return post2.date - post1.date;
+        });
+        break;
+      }
+    }
+
+    return sortedArray;
+  }
+
   //Static method that fills the profile infos
   static changeUIOfProfile(dataObject, container) {
     container.innerHTML = new PhotographerProfileTemplate(
@@ -99,7 +125,7 @@ const launchPhotographerApp = new PhotographerApp().main();
 console.log(postsContainer);
 
 //
-let urlPhotographerId = Number(getParameter("id"));
+let urlPhotographerId = Number(getUrlParameter("id"));
 
 let photographerObject = {};
 let photographerMediaArray = [];
@@ -154,107 +180,37 @@ launchPhotographerApp.then((data) => {
   */
   //Code for the contact modal
   const contactButton = profileContainer.querySelector(".button");
-  const modalContact = document.querySelector(".contact__modal");
-  const modalLightbox = document.querySelector(".lightbox__modal");
 
   const postsCard = postsContainer.querySelectorAll(".images__post-container");
   const postsCardArray = Array.from(postsCard);
 
   //Code for the contact modal
-  contactButton.addEventListener("click", () => {
-    modalContact.classList.add("fade-in");
-    setTimeout(() => {
-      modalContact.classList.remove("fade-in");
-    }, 250);
-    modalContact.showModal();
-    const closeModalButton = modalContact.querySelector(
-      ".contact__button-close-dialog"
-    );
+  contactButton.addEventListener("click", displayContactModal);
 
-    let formBuilder = new ContactFormBuilder();
-
-    formBuilder
-      .setFirstName("fName")
-      .setLastName("lName")
-      .setEmail("email")
-      .setMessage("test 1234");
-
-    console.log(formBuilder);
-
-    closeModalButton.addEventListener("click", () => {
-      modalContact.classList.add("fade-out");
-      setTimeout(() => {
-        modalContact.classList.remove("fade-out");
-        modalContact.close();
-      }, 250);
-    });
-  });
+  //Sorted arrays
+  let arrayOfPostsSortedByLikes = PhotographerApp.sortPostsByUser(
+    photographerMediaArray,
+    "likes"
+  );
+  let arrayOfPostsSortedByDate = PhotographerApp.sortPostsByUser(
+    photographerMediaArray,
+    "date"
+  );
+  let arrayOfPostsSortedByTitle = PhotographerApp.sortPostsByUser(
+    photographerMediaArray,
+    "title"
+  );
 
   //Code for the lightbox-carousel modal
+  console.log({ arrayOfPostsSortedByLikes });
   for (post of postsCardArray) {
     const linkToOpenModal = post.querySelector("a[href]");
-    linkToOpenModal.addEventListener("click", (e) => {
-      e.preventDefault();
-      modalLightbox.classList.add("fade-in");
-      setTimeout(() => {
-        modalLightbox.classList.remove("fade-in");
-      }, 250);
-      modalLightbox.showModal();
-
-      const carouselInfo = {
-        direction: 0,
-        actualIndex: 0,
-        nextIndex: 0,
-      };
-
-      const closeModalButton = modalLightbox.querySelector(
-        ".lightbox__button-close-dialog"
-      );
-
-      const nextButton = modalLightbox.querySelector(".lightbox__button-next");
-      const previousButton = modalLightbox.querySelector(
-        ".lightbox__button-previous"
-      );
-
-      closeModalButton.addEventListener("click", () => {
-        modalLightbox.classList.add("fade-out");
-        setTimeout(() => {
-          modalLightbox.classList.remove("fade-out");
-          modalLightbox.close();
-        }, 250);
-      });
-    });
+    linkToOpenModal.addEventListener("click", displayLightboxModal);
 
     //Should use an Observer pattern here
 
     const likeButton = post.querySelector(".images__post-like-button");
-    likeButton.addEventListener("click", (e) => {
-      console.log("click");
-
-      let likeButtonHasAlreadyBeenPressed =
-        likeButton.classList.contains("active-like");
-
-      let postLikes = Number(likeButton.textContent);
-      console.log({ postLikes });
-
-      if (likeButtonHasAlreadyBeenPressed) {
-        likeButton.classList.remove("active-like");
-        amountOfLikes--;
-        postLikes--;
-        likeButton.innerHTML = `${postLikes} <i class="fa-solid fa-heart"></i>`;
-        console.log("True → disliking");
-        console.log(likeButton.textContent);
-        console.log(amountOfLikes);
-      } else {
-        likeButton.classList.add("active-like");
-        amountOfLikes++;
-        postLikes++;
-        likeButton.innerHTML = `${postLikes} <i class="fa-solid fa-heart"></i>`;
-        console.log("False → liking");
-        console.log(likeButton.textContent);
-        console.log(amountOfLikes);
-      }
-    });
+    likeButton.addEventListener("click", addLikeToPost);
   }
 
   /* 
