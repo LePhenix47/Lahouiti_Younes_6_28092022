@@ -8,9 +8,9 @@ class PhotographerApp {
   }
 
   //Retrives the data from the JSON file
-  async main() {
-    const photosData = await this.usersDataApi.getPhotos();
-
+  main() {
+    const photosData = this.usersDataApi.getPhotos();
+    console.log({ photosData });
     return photosData;
   }
 
@@ -36,19 +36,15 @@ class PhotographerApp {
 
   static getPostsOfUser(arrayOfPosts, urlIdOfPhotographer) {
     let photographersPostsArray = [];
-    for (let i = 0; i < arrayOfPosts.length; i++) {
-      let post = arrayOfPosts[i];
-      const { photographerId } = post;
-      if (photographerId === urlIdOfPhotographer) {
-        //If the ID of the photographer in the post corresponds to the ID in the parameters of the URL then you retrieve me ALL his posts
-        photographersPostsArray.push(post);
-      }
-    }
+
+    photographersPostsArray = arrayOfPosts.filter((post) => {
+      return post.photographerId === urlIdOfPhotographer;
+    });
 
     return photographersPostsArray;
   }
 
-  static sortPostsByUser(arrayOfPosts, sortProperty) {
+  static sortPostsByProperty(arrayOfPosts, sortProperty) {
     let sortedArray = [];
     switch (sortProperty) {
       case "title": {
@@ -88,21 +84,18 @@ class PhotographerApp {
     ).createPosts();
   }
 
+  static updateUIOfStickyBar(photographerObject, data) {
+    let updatedStickyBar = new StickyBarTemplate(
+      photographerObject,
+      data
+    ).updateStickyBar();
+  }
+
   static changeUIOfStickyBar(photographerObject, data) {
-    const {
-      amountOfLikesParagraph,
-      priceParagraph,
-      descriptionMetaTag,
-      titleMetaTag,
-      amountOfLikes,
-    } = data;
-    amountOfLikesParagraph.innerHTML = `${amountOfLikes} <i class="fa-solid fa-heart"></i>`;
-    priceParagraph.textContent = `${photographerObject.price}€ / jour`;
-    descriptionMetaTag.setAttribute(
-      "content",
-      `Découvrez les photos prises par ${photographerObject.name}!`
-    );
-    titleMetaTag.textContent = `Fisheye - ${photographerObject.name}`;
+    let newStickyBar = new StickyBarTemplate(
+      photographerObject,
+      data
+    ).createStickyBar();
   }
 }
 
@@ -130,15 +123,17 @@ let urlPhotographerId = Number(getUrlParameter("id"));
 let photographerObject = {};
 let photographerMediaArray = [];
 let arrayOfLikes = [];
+
+let arrayOfImageLinks = [];
+let arrayOfVideoLinks = [];
+
 let amountOfLikes = 0;
 
 let profileData = {};
-
+console.log(launchPhotographerApp);
 //
 launchPhotographerApp.then((data) => {
   const { photographers, media } = data;
-  // console.table(photographers);
-  // console.table(media);
   photographerObject = PhotographerApp.getUserInfos(
     photographers,
     urlPhotographerId
@@ -149,15 +144,24 @@ launchPhotographerApp.then((data) => {
     urlPhotographerId
   );
 
+  //Initialising different arrays
+
   arrayOfLikes = photographerMediaArray.map((media) => {
     return media.likes;
+  });
+  arrayOfImageLinks = photographerMediaArray.map((media) => {
+    return media.image;
+  });
+
+  arrayOfVideoLinks = photographerMediaArray.map((media) => {
+    return media.video;
   });
 
   amountOfLikes = arrayOfLikes.reduce((previousValue, currentValue) => {
     return previousValue + currentValue;
   });
-
-  stickyBarData = {
+  //Data for the sticky bar
+  let stickyBarData = {
     amountOfLikesParagraph,
     priceParagraph,
     titleMetaTag,
@@ -165,6 +169,7 @@ launchPhotographerApp.then((data) => {
     amountOfLikes,
   };
 
+  //Calling static methods to add fill the page
   PhotographerApp.changeUIOfStickyBar(photographerObject, stickyBarData);
   PhotographerApp.changeUIOfProfile(photographerObject, profileContainer);
   PhotographerApp.changeUIOfPosts(photographerMediaArray, postsContainer);
@@ -177,29 +182,31 @@ launchPhotographerApp.then((data) => {
 
   /* 
   CODE TO BE REFACTORED!!
+  ↓
   */
+
   //Code for the contact modal
   const contactButton = profileContainer.querySelector(".button");
 
   const postsCard = postsContainer.querySelectorAll(".images__post-container");
   const postsCardArray = Array.from(postsCard);
 
-  //Code for the contact modal
-  contactButton.addEventListener("click", displayContactModal);
-
   //Sorted arrays
-  let arrayOfPostsSortedByLikes = PhotographerApp.sortPostsByUser(
+  let arrayOfPostsSortedByLikes = PhotographerApp.sortPostsByProperty(
     photographerMediaArray,
     "likes"
   );
-  let arrayOfPostsSortedByDate = PhotographerApp.sortPostsByUser(
+  let arrayOfPostsSortedByDate = PhotographerApp.sortPostsByProperty(
     photographerMediaArray,
     "date"
   );
-  let arrayOfPostsSortedByTitle = PhotographerApp.sortPostsByUser(
+  let arrayOfPostsSortedByTitle = PhotographerApp.sortPostsByProperty(
     photographerMediaArray,
     "title"
   );
+
+  //Code for the contact modal
+  contactButton.addEventListener("click", displayContactModal);
 
   //Code for the lightbox-carousel modal
   console.log({ arrayOfPostsSortedByLikes });
@@ -207,13 +214,12 @@ launchPhotographerApp.then((data) => {
     const linkToOpenModal = post.querySelector("a[href]");
     linkToOpenModal.addEventListener("click", displayLightboxModal);
 
-    //Should use an Observer pattern here
-
     const likeButton = post.querySelector(".images__post-like-button");
     likeButton.addEventListener("click", addLikeToPost);
   }
 
   /* 
+  ↑
   CODE TO BE REFACTORED!!
   */
   console.log(contactButton);
