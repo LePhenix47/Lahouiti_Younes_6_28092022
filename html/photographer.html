@@ -29,6 +29,7 @@
   <script defer src="../js/Apis/photographers-api.js"></script>
   <script defer src="../js/Utils/modal-functions.js"></script>
   <script defer src="../js/Utils/get-parameters.js"></script>
+  <script defer src="../js/Utils/like-functions.js"></script>
   <script defer src="../js/Builders/contact-form-builder.js"></script>
   <script defer src="../js/Templates/photographer-template.js"></script>
   <script defer src="../js/Pages/photographer.js"></script>
@@ -36,6 +37,15 @@
 </head>
 
 <body>
+  <!-- Page loader   -->
+  <div class="page-loader" aria-label="La page est en cours de chargement, veuillez ne pas la recharger"
+    aria-live="polite">
+    <div class="page-loader__circle"></div>
+    <div class="page-loader__circle"></div>
+    <div class="page-loader__circle"></div>
+  </div>
+
+
   <header class="header" role="banner">
     <a href="../index.html" class="header__logo-wrapper" title="Lien vers la page d'acceuil">
       <img src="../assets/images/logo.png" alt="Logo de bannière pour le site de FishEye" class="header__logo">
