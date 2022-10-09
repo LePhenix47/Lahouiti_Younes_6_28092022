@@ -30,6 +30,7 @@
   <script defer src="../js/Utils/modal-functions.js"></script>
   <script defer src="../js/Utils/get-parameters.js"></script>
   <script defer src="../js/Utils/like-functions.js"></script>
+  <script defer src="../js/Utils/select-functions.js"></script>
   <script defer src="../js/Builders/contact-form-builder.js"></script>
   <script defer src="../js/Templates/photographer-template.js"></script>
   <script defer src="../js/Templates/sticky-bar-template.js"></script>
@@ -167,7 +168,7 @@
             <option value="titre" class="option">Titre</option>
           </select>
 
-          <div class="dropdown-menu">
+          <div class="dropdown-menu hide">
             <ul class="dropdown-menu__list">
               <li class="dropdown-menu__list-item">Date</li>
               <li class="dropdown-menu__list-item">Titre</li>
@@ -192,19 +193,43 @@
 
       <div class="images">
 
-        <!-- Template for a unique post -->
+        <!-- Template for a unique post with an image-->
         <template>
 
-          <div class="images__post-container">
+          <div class="images__post-container" data-post-id="${id}" data-photographers-id="${photographerId}"
+            data-publishing-date="${date}" data-likes="${likes}" data-title="${title}">
             <div class="images__post">
-              <a href="./photographer.html" title="[TITRE DU POST]">
-                <video src="" poster="" class="images__video"></video>
-                <img class="images__image" src="[URL PHOTO]" alt="[DESCRIPTION TEXTUELLE ALTERNATIVE]">
+              <a href="#" title="${title}">
+                <img class="images__image" src="../assets/images/Posts photos/${image}"
+                  alt="'${title}' fait le ${date}" />
               </a>
               <div class="images__post-text">
-                <p class="images__post-description">Post description</p>
-                <button class="images__post-like-button">1 337 <i class="fa-solid fa-heart"></i></button>
+                <p class="images__post-description">${title}</p>
+                <button class="images__post-like-button">${likes} <i class="fa-solid fa-heart"></i></button>
               </div>
+            </div>
+          </div>
+
+
+        </template>
+        <!-- Template for a unique post with a video-->
+        <template>
+
+          <div class="images__post-container" data-post-id="${id}" data-photographers-id="${photographerId}"
+            data-publishing-date="${date}" data-likes="${likes}" data-title="${title}">
+
+            <div class="images__post">
+
+              <a href="#" title="${title}">
+                <video src="../assets/images/Posts photos/${video}" class="images__video">
+                </video>
+              </a>
+
+              <div class="images__post-text">
+                <p class="images__post-description">${title}</p>
+                <button class="images__post-like-button">${likes} <i class="fa-solid fa-heart"></i></button>
+              </div>
+
             </div>
           </div>
 

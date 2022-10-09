@@ -14,7 +14,7 @@ class PhotographerApp {
     return photosData;
   }
 
-  static getUserInfos(arrayOfUsers, urlIdOfPhotographer) {
+  static getInfosOfPhotographer(arrayOfUsers, urlIdOfPhotographer) {
     let photographerInfosObject = {};
     for (let i = 0; i < arrayOfUsers.length; i++) {
       let user = arrayOfUsers[i];
@@ -34,7 +34,7 @@ class PhotographerApp {
     return photographerInfosObject;
   }
 
-  static getPostsOfUser(arrayOfPosts, urlIdOfPhotographer) {
+  static getPostsOfPhotographer(arrayOfPosts, urlIdOfPhotographer) {
     let photographersPostsArray = [];
 
     photographersPostsArray = arrayOfPosts.filter((post) => {
@@ -134,12 +134,12 @@ console.log(launchPhotographerApp);
 //
 launchPhotographerApp.then((data) => {
   const { photographers, media } = data;
-  photographerObject = PhotographerApp.getUserInfos(
+  photographerObject = PhotographerApp.getInfosOfPhotographer(
     photographers,
     urlPhotographerId
   );
 
-  photographerMediaArray = PhotographerApp.getPostsOfUser(
+  photographerMediaArray = PhotographerApp.getPostsOfPhotographer(
     media,
     urlPhotographerId
   );
@@ -207,6 +207,11 @@ launchPhotographerApp.then((data) => {
 
   //Code for the contact modal
   contactButton.addEventListener("click", displayContactModal);
+
+  //Code to sort the posts
+  const selectSortElement = document.querySelector("select");
+
+  selectSortElement.addEventListener("click", sortPosts);
 
   //Code for the lightbox-carousel modal
   console.log({ arrayOfPostsSortedByLikes });

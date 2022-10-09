@@ -2,11 +2,14 @@
 const modalContact = document.querySelector(".contact__modal");
 
 function displayContactModal() {
+  //Adds the fade-in animation whenever the user opens the modal window and removes its class after the animation finished
   modalContact.classList.add("fade-in");
   setTimeout(() => {
     modalContact.classList.remove("fade-in");
   }, 250);
+
   modalContact.showModal();
+
   const closeModalButton = modalContact.querySelector(
     ".contact__button-close-dialog"
   );
@@ -21,6 +24,7 @@ function displayContactModal() {
 
   console.log(formBuilder);
 
+  //Adds the fade-in animation whenever the user opens the modal window and removes its class after the animation finished
   closeModalButton.addEventListener("click", () => {
     modalContact.classList.add("fade-out");
     setTimeout(() => {

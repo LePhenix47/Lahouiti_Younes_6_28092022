@@ -1,6 +1,7 @@
 @import "../Utils/variables";
 @import "../Utils/mixins";
 
+//Class to toggle the display of element in the DOM
 .hide {
     display: none !important;
 }
@@ -9,6 +10,8 @@
     display: block !important;
 }
 
+
+//Keyframes for the entry/exit of the element in the DOM
 @-webkit-keyframes fade-in {
     from {
         opacity: 0;
@@ -52,6 +55,7 @@
     animation-direction: reverse;
 }
 
+//Class that changes color when the user likes the post
 .active-like {
     color: var(--dialog-bg-color) !important;
 }

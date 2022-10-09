@@ -556,6 +556,7 @@
 .dropdown-menu {
 
     background-color: var(--buttons-bg-color);
+    margin-top: -5px;
     //Not using aspect ratio here since we intend to change the height of the element when the user clicks on it
     width: 170px;
     max-height: 170px;

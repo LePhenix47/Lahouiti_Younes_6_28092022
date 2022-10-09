@@ -10,6 +10,7 @@
 ::-webkit-scrollbar-thumb {
     background-color: var(--scrollbar-thumb-bg-color);
     border-radius: 100vmax;
+    border: 2px solid var(--scrollbar-bg-color);
 
     &:hover {
         background-color: var(--scrollbar-thumb-bg-color--hover);
