@@ -1,0 +1,121 @@
+@import "../Utils/variables";
+@import "../Utils/mixins";
+
+.page-loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+
+    height: 105vh;
+    width: 105%;
+    z-index: 4;
+    background-color: var(--odd-card-bg-color);
+
+    @include center-flex(20px);
+
+    -webkit-animation-name: remove-loader;
+    animation-name: remove-loader;
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+
+
+    @include mobile-only {
+        -webkit-animation-name: remove-loader-mobile;
+        animation-name: remove-loader-mobile;
+    }
+
+
+
+    &__circle {
+        background-color: var(--text-color-quaternary);
+        aspect-ratio: 1/1;
+        height: 25px;
+        border-radius: 50%;
+        animation: grow-circle 350ms ease-in-out both alternate-reverse 10;
+
+        &:nth-child(2) {
+            -webkit-animation-delay: 100ms;
+            animation-delay: 80ms;
+        }
+
+        &:nth-child(3) {
+            -webkit-animation-delay: 200ms;
+            animation-delay: 160ms;
+        }
+    }
+}
+
+
+@-webkit-keyframes grow-circle {
+    from {
+        scale: 50%;
+    }
+
+    to {
+        scale: 150%;
+    }
+}
+
+
+@keyframes grow-circle {
+    from {
+        scale: 50%;
+    }
+
+    to {
+        scale: 150%;
+    }
+}
+
+
+@-webkit-keyframes remove-loader {
+    from {
+        translate: -50% -50%;
+    }
+
+    to {
+        translate: -200% -50%;
+        display: none;
+    }
+}
+
+
+@keyframes remove-loader {
+    from {
+        translate: -50% -50%;
+    }
+
+    to {
+        translate: -200% -50%;
+        display: none;
+    }
+}
+
+@-webkit-keyframes remove-loader-mobile {
+    from {
+        translate: -50% -50%;
+    }
+
+    to {
+        translate: -50% -200%;
+        display: none;
+    }
+}
+
+@keyframes remove-loader-mobile {
+    from {
+        translate: -50% -50%;
+    }
+
+    to {
+        translate: -50% -200%;
+        display: none;
+    }
+}
