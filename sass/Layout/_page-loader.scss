@@ -34,18 +34,20 @@
 
 
     &__circle {
-        background-color: var(--text-color-quaternary);
         aspect-ratio: 1/1;
         height: 25px;
         border-radius: 50%;
         animation: grow-circle 350ms ease-in-out both alternate-reverse 10;
+        background-color: var(--text-color-quaternary);
 
         &:nth-child(2) {
+            background-color: var(--text-color-tertiary);
             -webkit-animation-delay: 100ms;
             animation-delay: 80ms;
         }
 
         &:nth-child(3) {
+            background-color: var(--text-color-secondary);
             -webkit-animation-delay: 200ms;
             animation-delay: 160ms;
         }

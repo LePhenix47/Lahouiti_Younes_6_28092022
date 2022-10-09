@@ -42,7 +42,7 @@ class PhotographerProfileTemplate {
             <div class="images__post">
               <a href="#" title="${title}">
                 <img class="images__image" src="../assets/images/Posts photos/${image}"
-                  alt="'${title}' fait le ${date}" />
+                  alt="'${title}' fait en ${new Date(date).getFullYear()}" />
               </a>
               <div class="images__post-text">
                 <p class="images__post-description">${title}</p>

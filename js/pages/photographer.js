@@ -47,25 +47,29 @@ class PhotographerApp {
   static sortPostsByProperty(arrayOfPosts, sortProperty) {
     let sortedArray = [];
     switch (sortProperty) {
-      case "title": {
+      case "titre": {
+        console.log("Sorting the array by its title: A → Z");
         sortedArray = arrayOfPosts.sort((post1, post2) => {
-          return post2.title - post1.title;
+          return post1.title.localeCompare(post2.title);
         });
         break;
       }
-      case "likes": {
+      case "popularité": {
+        console.log("Sorting the array by its likes: Most → least");
         sortedArray = arrayOfPosts.sort((post1, post2) => {
           return post2.likes - post1.likes;
         });
         break;
       }
       case "date": {
+        console.log("Sorting the array by its date: Recent → oldest");
         sortedArray = arrayOfPosts.sort((post1, post2) => {
           return post2.date - post1.date;
         });
         break;
       }
     }
+    console.log({ sortedArray });
 
     return sortedArray;
   }
@@ -186,6 +190,53 @@ launchPhotographerApp.then((data) => {
   */
 
   //Code for the contact modal
+
+  // const contactButton = profileContainer.querySelector(".button");
+
+  // const postsCard = postsContainer.querySelectorAll(".images__post-container");
+  // const postsCardArray = Array.from(postsCard);
+
+  // //Sorted arrays
+  // let arrayOfPostsSortedByLikes = PhotographerApp.sortPostsByProperty(
+  //   photographerMediaArray,
+  //   "likes"
+  // );
+  // let arrayOfPostsSortedByDate = PhotographerApp.sortPostsByProperty(
+  //   photographerMediaArray,
+  //   "date"
+  // );
+  // let arrayOfPostsSortedByTitle = PhotographerApp.sortPostsByProperty(
+  //   photographerMediaArray,
+  //   "title"
+  // );
+
+  // //Code for the contact modal
+  // contactButton.addEventListener("click", displayContactModal);
+
+  // //Code to sort the posts
+  // const selectSortElement = document.querySelector("select");
+
+  // selectSortElement.addEventListener("click", sortPosts);
+
+  // //Code for the lightbox-carousel modal
+  // console.log({ arrayOfPostsSortedByLikes });
+  // for (post of postsCardArray) {
+  //   const linkToOpenModal = post.querySelector("a[href]");
+  //   linkToOpenModal.addEventListener("click", displayLightboxModal);
+
+  //   const likeButton = post.querySelector(".images__post-like-button");
+  //   likeButton.addEventListener("click", addLikeToPost);
+  // }
+  addPostFeatures();
+  /* 
+  ↑
+  CODE TO BE REFACTORED!!
+  */
+});
+
+console.log("Id of photograph =", urlPhotographerId);
+
+function addPostFeatures() {
   const contactButton = profileContainer.querySelector(".button");
 
   const postsCard = postsContainer.querySelectorAll(".images__post-container");
@@ -222,12 +273,4 @@ launchPhotographerApp.then((data) => {
     const likeButton = post.querySelector(".images__post-like-button");
     likeButton.addEventListener("click", addLikeToPost);
   }
-
-  /* 
-  ↑
-  CODE TO BE REFACTORED!!
-  */
-  console.log(contactButton);
-});
-
-console.log("Id of photograph =", urlPhotographerId);
+}
