@@ -54,13 +54,6 @@ $breakpoints : ( //Breakpoints for the media queries
     gap: $gap;
 }
 
-@mixin grid-full($rows: auto-fill, $rows-space: 1fr, $columns: auto-fill,
-    $columns-space: 1fr, $gap: 0px) {
-    display: grid;
-    grid-template-rows: repeat($rows, minmax($rows-space, 1fr));
-    grid-template-columns: repeat($columns, minmax($columns-space, 1fr));
-    gap: $gap;
-}
 
 
 @mixin position-fix-center {
