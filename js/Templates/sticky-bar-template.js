@@ -1,6 +1,5 @@
 class StickyBarTemplate {
-  constructor(data, photographerObject) {
-    this.data = data;
+  constructor(photographerObject) {
     this.photographerObject = photographerObject;
   }
 

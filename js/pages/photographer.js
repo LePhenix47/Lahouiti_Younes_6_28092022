@@ -88,18 +88,12 @@ class PhotographerApp {
     ).createPosts();
   }
 
-  static updateUIOfStickyBar(photographerObject, data) {
-    let updatedStickyBar = new StickyBarTemplate(
-      photographerObject,
-      data
-    ).updateStickyBar();
+  static updateUIOfStickyBar(photographerObject) {
+    new StickyBarTemplate(photographerObject).updateStickyBar();
   }
 
-  static changeUIOfStickyBar(photographerObject, data) {
-    let newStickyBar = new StickyBarTemplate(
-      photographerObject,
-      data
-    ).createStickyBar();
+  static changeUIOfStickyBar(photographerObject) {
+    new StickyBarTemplate(photographerObject).createStickyBar();
   }
 }
 
@@ -128,9 +122,6 @@ let photographerObject = {};
 let photographerMediaArray = [];
 let arrayOfLikes = [];
 
-let arrayOfImageLinks = [];
-let arrayOfVideoLinks = [];
-
 let amountOfLikes = 0;
 
 let profileData = {};
@@ -153,13 +144,6 @@ launchPhotographerApp.then((data) => {
   arrayOfLikes = photographerMediaArray.map((media) => {
     return media.likes;
   });
-  arrayOfImageLinks = photographerMediaArray.map((media) => {
-    return media.image;
-  });
-
-  arrayOfVideoLinks = photographerMediaArray.map((media) => {
-    return media.video;
-  });
 
   amountOfLikes = arrayOfLikes.reduce((previousValue, currentValue) => {
     return previousValue + currentValue;
@@ -174,7 +158,7 @@ launchPhotographerApp.then((data) => {
   };
 
   //Calling static methods to add fill the page
-  PhotographerApp.changeUIOfStickyBar(photographerObject, stickyBarData);
+  PhotographerApp.changeUIOfStickyBar(stickyBarData);
   PhotographerApp.changeUIOfProfile(photographerObject, profileContainer);
   PhotographerApp.changeUIOfPosts(photographerMediaArray, postsContainer);
 
@@ -184,88 +168,35 @@ launchPhotographerApp.then((data) => {
   console.table(arrayOfLikes);
   console.log("Amount of likes = ", amountOfLikes);
 
-  /* 
-  CODE TO BE REFACTORED!!
-  ↓
-  */
-
-  //Code for the contact modal
-
-  // const contactButton = profileContainer.querySelector(".button");
-
-  // const postsCard = postsContainer.querySelectorAll(".images__post-container");
-  // const postsCardArray = Array.from(postsCard);
-
-  // //Sorted arrays
-  // let arrayOfPostsSortedByLikes = PhotographerApp.sortPostsByProperty(
-  //   photographerMediaArray,
-  //   "likes"
-  // );
-  // let arrayOfPostsSortedByDate = PhotographerApp.sortPostsByProperty(
-  //   photographerMediaArray,
-  //   "date"
-  // );
-  // let arrayOfPostsSortedByTitle = PhotographerApp.sortPostsByProperty(
-  //   photographerMediaArray,
-  //   "title"
-  // );
-
-  // //Code for the contact modal
-  // contactButton.addEventListener("click", displayContactModal);
-
-  // //Code to sort the posts
-  // const selectSortElement = document.querySelector("select");
-
-  // selectSortElement.addEventListener("click", sortPosts);
-
-  // //Code for the lightbox-carousel modal
-  // console.log({ arrayOfPostsSortedByLikes });
-  // for (post of postsCardArray) {
-  //   const linkToOpenModal = post.querySelector("a[href]");
-  //   linkToOpenModal.addEventListener("click", displayLightboxModal);
-
-  //   const likeButton = post.querySelector(".images__post-like-button");
-  //   likeButton.addEventListener("click", addLikeToPost);
-  // }
   addPostFeatures();
-  /* 
-  ↑
-  CODE TO BE REFACTORED!!
-  */
 });
 
 console.log("Id of photograph =", urlPhotographerId);
 
+//Function that adds all the different event listeners
 function addPostFeatures() {
   const contactButton = profileContainer.querySelector(".button");
 
   const postsCard = postsContainer.querySelectorAll(".images__post-container");
   const postsCardArray = Array.from(postsCard);
 
-  //Sorted arrays
-  let arrayOfPostsSortedByLikes = PhotographerApp.sortPostsByProperty(
-    photographerMediaArray,
-    "likes"
-  );
-  let arrayOfPostsSortedByDate = PhotographerApp.sortPostsByProperty(
-    photographerMediaArray,
-    "date"
-  );
-  let arrayOfPostsSortedByTitle = PhotographerApp.sortPostsByProperty(
-    photographerMediaArray,
-    "title"
-  );
-
   //Code for the contact modal
   contactButton.addEventListener("click", displayContactModal);
 
   //Code to sort the posts
+  //1. For mobile devices
   const selectSortElement = document.querySelector("select");
 
-  selectSortElement.addEventListener("click", sortPosts);
+  selectSortElement.addEventListener("change", sortPostsForMobile);
+
+  //2. For widescreen devices
+  const buttonSortElement = document.querySelector(
+    ".dropdown-menu__sort-button"
+  );
+
+  buttonSortElement.addEventListener("click", sortPostsForWidescreens);
 
   //Code for the lightbox-carousel modal
-  console.log({ arrayOfPostsSortedByLikes });
   for (post of postsCardArray) {
     const linkToOpenModal = post.querySelector("a[href]");
     linkToOpenModal.addEventListener("click", displayLightboxModal);

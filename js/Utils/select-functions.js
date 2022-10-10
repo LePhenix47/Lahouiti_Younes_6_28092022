@@ -1,23 +1,65 @@
-function sortPosts() {
+function sortPostsForMobile() {
   let selectElement = this;
 
-  const dropDownMenu = document.querySelector(".dropdown-menu");
-  const userIsOnWidescreen = window.innerWidth > 768;
-
-  if (userIsOnWidescreen) {
-    let dropDownMenuNotOpened = dropDownMenu.classList.contains("hide");
-    if (dropDownMenuNotOpened) {
-      dropDownMenu.classList.remove("hide");
-      selectElement.classList.add("select-selected");
-    } else {
-      dropDownMenu.classList.add("hide");
-      selectElement.classList.remove("select-selected");
-    }
-  }
   console.log(selectElement.value);
   //We take the current posts
+  sortPosts(selectElement);
+}
+
+/* 
+
+  For widescreens
+
+*/
+function sortPostsForWidescreens() {
+  let buttonElement = this;
+  console.log("click!");
+
+  const iconLabelContainer = document.querySelector(
+    ".dropdown-menu__icon-container"
+  );
+
+  const dropDownMenu = document.querySelector(".dropdown-menu");
+  const dropdownMenuItems = document.querySelectorAll(
+    ".dropdown-menu__list-item"
+  ); //⚠ NodeList
+
+  let dropDownMenuNotOpened = dropDownMenu.classList.contains("hide");
+  if (dropDownMenuNotOpened) {
+    dropDownMenu.classList.remove("hide");
+    iconLabelContainer.classList.add("active-sort-button-icon");
+  } else {
+    dropDownMenu.classList.add("hide");
+    iconLabelContainer.classList.remove("active-sort-button-icon");
+  }
+
+  for (item of dropdownMenuItems) {
+    let itemHasSameValueAsButton = item.innerText === buttonElement.innerText;
+
+    if (itemHasSameValueAsButton) {
+      item.classList.add("hide");
+    } else {
+      item.classList.remove("hide");
+    }
+    item.addEventListener("click", setItemName);
+  }
+}
+
+function setItemName() {
+  let itemElement = this;
+
+  let buttonElement = document.querySelector(".dropdown-menu__sort-button");
+
+  buttonElement.textContent = itemElement.innerText;
+  console.groupCollapsed("sorting for PCs");
+  sortPosts(buttonElement);
+  console.groupEnd("sorting for PCs");
+  sortPostsForWidescreens();
+}
+
+function sortPosts(element) {
+  //We take the current posts
   let actualPosts = document.querySelectorAll(".images > *"); //⚠ NodeList → Array functions do not work with NodeLists
-  let actualPostsArray = Array.from(actualPosts);
 
   let actualPostsDataArray = [];
 
@@ -58,13 +100,21 @@ function sortPosts() {
     actualPostsDataArray.push(actualPostsDataObject);
   }
 
-  let sortingProp = selectElement.value;
+  //Given the fact that we use a <button> AND also a <select>, the way to get their values is different
+  //If it's a button → We get the innerText in lowercase
+  //Otherwise we get the value of the option selected
+  let valueOfElement =
+    element.tagName === "BUTTON"
+      ? element.innerText.toLowerCase()
+      : element.value;
+
+  let sortingProperty = valueOfElement;
   let sortedArray = PhotographerApp.sortPostsByProperty(
     actualPostsDataArray,
-    sortingProp
+    sortingProperty
   );
   PhotographerApp.changeUIOfPosts(sortedArray, postsContainer);
   addPostFeatures();
-  console.log({ sortingProp });
+  console.log({ sortingProperty });
   console.table(sortedArray);
 }

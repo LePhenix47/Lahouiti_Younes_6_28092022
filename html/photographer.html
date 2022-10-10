@@ -47,7 +47,7 @@
     <div class="page-loader__circle"></div>
   </div>
 
-
+  <!-- Header -->
   <header class="header" role="banner">
     <a href="../index.html" class="header__logo-wrapper" title="Lien vers la page d'acceuil">
       <img src="../assets/images/logo.png" alt="Logo de bannière pour le site de FishEye" class="header__logo">
@@ -55,6 +55,7 @@
   </header>
 
 
+  <!-- Main content of the page   -->
   <main class="main" role="main" aria-label="Contenu de la page principale">
     <!--   Sticky bar for the price and the amount of likes   -->
     <div class="main__invoice-likes">
@@ -159,17 +160,22 @@
         <label for="select" class="label">Trier par:</label>
         <div class="images__select-container">
 
-          <div class="dropdown-menu__icon-container">
+          <label class="dropdown-menu__icon-container" for="sort-button">
             <i class="fa-solid fa-chevron-down dropdown-menu__icon"></i>
-          </div>
+          </label>
+          <!--      Will be  displayed only on mobile devices   -->
           <select name="orderby" class="select select--mobile-only" id="select">
             <option value="popularité" class="option">Popularité</option>
             <option value="date" class="option">Date</option>
             <option value="titre" class="option">Titre</option>
           </select>
-
+          <!--      Will be displayed on widescreen devices      -->
+          <button class="dropdown-menu__sort-button" type="button" id="sort-button">
+            Popularité
+          </button>
           <div class="dropdown-menu hide">
             <ul class="dropdown-menu__list">
+              <li class="dropdown-menu__list-item">Popularité</li>
               <li class="dropdown-menu__list-item">Date</li>
               <li class="dropdown-menu__list-item">Titre</li>
             </ul>

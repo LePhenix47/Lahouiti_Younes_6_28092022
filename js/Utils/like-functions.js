@@ -60,5 +60,5 @@ function updateAmountOfLikes(
   const postCard = document.querySelector(".images__post-container");
   postCard.setAttribute("data-likes", `${likesOfPost}`);
   console.log(updatedStickyBarData);
-  PhotographerApp.updateUIOfStickyBar({}, updatedStickyBarData);
+  PhotographerApp.updateUIOfStickyBar(updatedStickyBarData);
 }
