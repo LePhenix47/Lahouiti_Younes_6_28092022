@@ -26,12 +26,15 @@ function displayContactModal() {
   );
   //Adds the fade-in animation whenever the user opens the modal window and removes its class after the animation finished
   closeModalButton.addEventListener("click", () => {
-    closeModalSmoothly(modalContact);
+    closeModalFadeOut(modalContact);
   });
 }
 
 //Function for the lightbox-carousel modal
 const modalLightbox = document.querySelector(".lightbox__modal");
+let imageUrl = "";
+let imageFileName = "";
+let postDescription = "";
 
 function displayLightboxModal(e) {
   e.preventDefault();
@@ -45,24 +48,23 @@ function displayLightboxModal(e) {
   console.log(this);
 
   //This array contains the different image urls
-  let arrayOfImages = photographerMediaArray.map((post) => {
+  let arrayOfImageFileNames = photographerMediaArray.map((post) => {
     return post.image || post.video;
   });
 
-  console.table(arrayOfImages);
+  let arrayOfDescriptions = photographerMediaArray.map((post) => {
+    return post.title;
+  });
 
-  //Constants to get the URL, the file name and the title of the image
-  const imageUrl = e.currentTarget.children[0].getAttribute("src");
-  const imageFileName = imageUrl.split("/Posts photos/")[1];
-  const imageTitle = e.currentTarget.getAttribute("title");
-  console.log({ imageUrl, imageFileName, imageTitle });
+  console.table(arrayOfImageFileNames);
 
-  updateModalImage(
-    modalLightbox,
-    imageFileName,
-    imageTitle,
-    imageUrl.includes(".mp4") ? "video" : "image"
-  );
+  //We give a value to our variables to get the URL, the file name and the title of the image
+  imageUrl = e.currentTarget.children[0].getAttribute("src");
+  imageFileName = imageUrl.split("/Posts photos/")[1];
+  postDescription = e.currentTarget.getAttribute("title");
+  console.log({ imageUrl, imageFileName, postDescription });
+
+  updateModalImage(imageFileName, postDescription);
   //
   const nextButton = modalLightbox.querySelector(".lightbox__button-next");
   const previousButton = modalLightbox.querySelector(
@@ -70,10 +72,20 @@ function displayLightboxModal(e) {
   );
 
   nextButton.addEventListener("click", (event) => {
-    changeImage(arrayOfImages, imageFileName, event, modalLightbox);
+    changeImage(
+      arrayOfImageFileNames,
+      imageFileName,
+      event,
+      arrayOfDescriptions
+    );
   });
   previousButton.addEventListener("click", (event) => {
-    changeImage(arrayOfImages, imageFileName, event, modalLightbox);
+    changeImage(
+      arrayOfImageFileNames,
+      imageFileName,
+      event,
+      arrayOfDescriptions
+    );
   });
 
   //
@@ -82,12 +94,12 @@ function displayLightboxModal(e) {
   );
 
   closeModalButton.addEventListener("click", () => {
-    closeModalSmoothly(modalLightbox);
+    closeModalFadeOut(modalLightbox);
   });
 }
 
 //Function that closes the modal window with a fade out animation
-function closeModalSmoothly(modal) {
+function closeModalFadeOut(modal) {
   modal.classList.add("fade-out");
   setTimeout(() => {
     modal.classList.remove("fade-out");
@@ -113,12 +125,17 @@ function changeImage(
   arrayOfImageFileNames,
   currentImageFileName,
   event,
-  modal
+  arrayOfDescriptions
 ) {
   carouselInfo.actualIndex =
     arrayOfImageFileNames.indexOf(currentImageFileName);
 
-  carouselInfo.direction = event.target.classList.contains("fa-chevron-left")
+  console.table(arrayOfImageFileNames);
+  console.log(carouselInfo.actualIndex);
+
+  carouselInfo.direction = event.currentTarget.children[0].classList.contains(
+    "fa-chevron-left"
+  )
     ? -1
     : 1;
 
@@ -141,27 +158,37 @@ function changeImage(
     "background: green; font-size: 20px; padding: 5px"
   );
 
-  console.log(
-    arrayOfImageFileNames[carouselInfo.actualIndex],
-    arrayOfImageFileNames[carouselInfo.nextIndex]
+  let nextImageFileName = arrayOfImageFileNames[carouselInfo.nextIndex];
+  let nextPostDescription = arrayOfImageFileNames[carouselInfo.nextIndex];
+
+  imageFileName = nextImageFileName;
+  postDescription = nextPostDescription;
+  console.log(nextImageFileName);
+
+  updateModalImage(
+    arrayOfImageFileNames[carouselInfo.nextIndex],
+    arrayOfDescriptions[carouselInfo.nextIndex]
   );
 }
 
-function updateModalImage(modal, imageUrl, imageTitle, videoOrImage = "image") {
-  const imageElement = modal.querySelector(".lightbox__image");
-  const videoElement = modal.querySelector(".lightbox__video");
-  const imageDescriptionElement = modal.querySelector(
+//Updates the UI of the modal
+function updateModalImage(newImageFileName, newPostDescription) {
+  const imageElement = document.querySelector(".lightbox__image");
+  const videoElement = document.querySelector(".lightbox__video");
+  const imageDescriptionElement = document.querySelector(
     ".lightbox__post-description"
   );
+  console.log({ newImageFileName, newPostDescription });
+  let fileIsAPhotography = newImageFileName.includes(".jpg");
 
-  if (videoOrImage === "image") {
+  if (fileIsAPhotography) {
     //Element to be hidden
     videoElement.classList.add("hide");
     //Element to be added
     imageElement.classList.remove("hide");
     imageElement.setAttribute(
       "src",
-      `../assets/images/Posts photos/${imageUrl}`
+      `../assets/images/Posts photos/${newImageFileName}`
     );
   } else {
     //Element to be hidden
@@ -170,9 +197,9 @@ function updateModalImage(modal, imageUrl, imageTitle, videoOrImage = "image") {
     videoElement.classList.remove("hide");
     videoElement.setAttribute(
       "src",
-      `../assets/images/Posts photos/${imageUrl}`
+      `../assets/images/Posts photos/${newImageFileName}`
     );
   }
 
-  imageDescriptionElement.textContent = imageTitle;
+  imageDescriptionElement.textContent = newPostDescription;
 }
