@@ -566,14 +566,23 @@
         display: none;
     }
 
+    &__sort-button {
+        display: block;
 
+        @include mobile-only {
+            display: none;
+        }
+
+        @include sort-element-styling;
+    }
 
     &__icon-container {
-        //Absoluto to the position of the select container, line: 466
+        //Absolute to the position of the select container, line: 466
         position: absolute;
         right: 25px;
         top: 18px;
 
+        transition: rotate 250ms ease-out;
         aspect-ratio: 1/1;
         height: 12px;
         @include center-flex;
@@ -602,7 +611,10 @@
         color: var(--buttons-color);
 
         &:hover {
-            background-color: blue;
+            cursor: pointer;
+            background-color: var(--buttons-bg-color--hover);
+            color: var(--buttons-color--hover);
+
         }
     }
 

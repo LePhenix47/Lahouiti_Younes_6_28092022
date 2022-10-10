@@ -6,15 +6,11 @@
     -moz-appearance: none;
     appearance: none;
 
-    background-color: var(--buttons-bg-color);
-    color: var(--buttons-color);
+    display: none;
 
-    font-size: 16px;
-    text-align: left;
+    @include mobile-only {
+        display: block;
+    }
 
-    padding: 14px;
-
-    width: 170px;
-
-    border-radius: var(--buttons-border-radius);
+    @include sort-element-styling;
 }

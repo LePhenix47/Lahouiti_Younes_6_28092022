@@ -35,9 +35,16 @@
 
     &__circle {
         aspect-ratio: 1/1;
-        height: 25px;
+
+        height: 30px;
+
+        @include mobile-only {
+            height: 15px;
+
+        }
+
         border-radius: 50%;
-        animation: grow-circle 350ms ease-in-out both alternate-reverse 10;
+        animation: grow-circle 350ms ease-in-out both alternate-reverse infinite;
         background-color: var(--text-color-quaternary);
 
         &:nth-child(2) {

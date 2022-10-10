@@ -1,3 +1,4 @@
+@import "../Utils/variables";
 //Maps
 $breakpoints : ( //Breakpoints for the media queries    
     mobile: 768px,
@@ -55,10 +56,23 @@ $breakpoints : ( //Breakpoints for the media queries
 }
 
 
-
 @mixin position-fix-center {
     position: fixed;
     top: 50%;
     left: 50%;
     translate: -50% -50%;
+}
+
+@mixin sort-element-styling {
+    background-color: var(--buttons-bg-color);
+    color: var(--buttons-color);
+
+    font-size: 16px;
+    text-align: left;
+
+    padding: 14px;
+
+    width: 170px;
+
+    border-radius: var(--buttons-border-radius);
 }
