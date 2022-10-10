@@ -129,6 +129,8 @@ console.log(launchPhotographerApp);
 //
 launchPhotographerApp.then((data) => {
   const { photographers, media } = data;
+
+  //Calling static methods to recover the different infos
   photographerObject = PhotographerApp.getInfosOfPhotographer(
     photographers,
     urlPhotographerId
@@ -140,7 +142,6 @@ launchPhotographerApp.then((data) => {
   );
 
   //Initialising different arrays
-
   arrayOfLikes = photographerMediaArray.map((media) => {
     return media.likes;
   });
@@ -148,6 +149,7 @@ launchPhotographerApp.then((data) => {
   amountOfLikes = arrayOfLikes.reduce((previousValue, currentValue) => {
     return previousValue + currentValue;
   });
+
   //Data for the sticky bar
   let stickyBarData = {
     amountOfLikesParagraph,
@@ -168,6 +170,7 @@ launchPhotographerApp.then((data) => {
   console.table(arrayOfLikes);
   console.log("Amount of likes = ", amountOfLikes);
 
+  //Calling a function to add all the different event listeners
   addPostFeatures();
 });
 

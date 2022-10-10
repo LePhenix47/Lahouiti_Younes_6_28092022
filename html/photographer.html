@@ -122,7 +122,7 @@
           <div class="lightbox__image-container">
             <img src="
             " alt="[DESCRIPTION TEXTUELLE ALTERNATIVE]" class="lightbox__image hide">
-            <video src="" alt="[DESCRIPTION TEXTUELLE ALTERNATIVE]" class="lightbox__video hide"></video>
+            <video src="" alt="[DESCRIPTION TEXTUELLE ALTERNATIVE]" controls class="lightbox__video hide"></video>
           </div>
           <p class="lightbox__post-description">Post description</p>
         </div>
@@ -207,7 +207,7 @@
             <div class="images__post">
               <a href="#" title="${title}">
                 <img class="images__image" src="../assets/images/Posts photos/${image}"
-                  alt="'${title}' fait le ${date}" />
+                  alt="'${title}' fait en ${new Date(date).getFullYear()}" />
               </a>
               <div class="images__post-text">
                 <p class="images__post-description">${title}</p>
@@ -220,14 +220,13 @@
         </template>
         <!-- Template for a unique post with a video-->
         <template>
-
           <div class="images__post-container" data-post-id="${id}" data-photographers-id="${photographerId}"
             data-publishing-date="${date}" data-likes="${likes}" data-title="${title}">
 
             <div class="images__post">
 
               <a href="#" title="${title}">
-                <video src="../assets/images/Posts photos/${video}" class="images__video">
+                <video src="../assets/images/Posts photos/${video}" controls class="images__video">
                 </video>
               </a>
 
@@ -238,7 +237,6 @@
 
             </div>
           </div>
-
 
         </template>
 

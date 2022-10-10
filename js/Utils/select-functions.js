@@ -57,6 +57,7 @@ function setItemName() {
   sortPostsForWidescreens();
 }
 
+//This function sorts the posts, it takes in its parameters the element to extract its value
 function sortPosts(element) {
   //We take the current posts
   let actualPosts = document.querySelectorAll(".images > *"); //⚠ NodeList → Array functions do not work with NodeLists
@@ -113,6 +114,7 @@ function sortPosts(element) {
     actualPostsDataArray,
     sortingProperty
   );
+  photographerMediaArray = sortedArray;
   PhotographerApp.changeUIOfPosts(sortedArray, postsContainer);
   addPostFeatures();
   console.log({ sortingProperty });
