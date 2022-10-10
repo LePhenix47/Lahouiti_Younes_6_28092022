@@ -18,6 +18,11 @@
         color: var(--buttons-color--focus);
     }
 
+    &:disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
     &--rounded {
         border-radius: var(--buttons-border-radius);
     }

@@ -10,6 +10,15 @@ function displayContactModal() {
 
   modalContact.showModal();
 
+  const form = modalContact.querySelector(".contact__form");
+  const submitButton = modalContact.querySelector(".contact__submit-button");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+  });
+
+  submitButton.disabled = true;
+
   let formBuilder = new ContactFormBuilder();
 
   formBuilder
