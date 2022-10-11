@@ -27,7 +27,6 @@
 
   <!-- JS -->
   <script defer src="../js/Apis/photographers-api.js"></script>
-  <script defer src="../js/Utils/modal-functions.js"></script>
   <script defer src="../js/Utils/get-parameters.js"></script>
   <script defer src="../js/Utils/like-functions.js"></script>
   <script defer src="../js/Utils/select-functions.js"></script>
@@ -35,6 +34,7 @@
   <script defer src="../js/Templates/photographer-template.js"></script>
   <script defer src="../js/Templates/sticky-bar-template.js"></script>
   <script defer src="../js/Pages/photographer.js"></script>
+  <script defer src="../js/Utils/modal-functions.js"></script>
 
 </head>
 
@@ -81,23 +81,32 @@
             <legend class="contact__legend">Veuillez remplir ces champs</legend>
             <section class="contact__fieldset-section">
               <label for="last-name" class="contact__label">Nom</label>
-              <input type="text" id="last-name" class="contact__input" />
+              <input type="text" name="name" id="last-name" class="contact__input" />
+              <p class="contact__error-message"></p>
             </section>
             <section class="contact__fieldset-section">
               <label for="first-name" class="contact__label">Prénom</label>
-              <input type="text" id="first-name" class="contact__input" />
+              <input type="text" name="name" id="first-name" class="contact__input" />
+              <p class="contact__error-message"></p>
             </section>
             <section class="contact__fieldset-section">
               <label for="email" class="contact__label">Email</label>
-              <input type="email" id="email" class="contact__input" />
+              <input type="email" name="email" id="email" class="contact__input" />
+              <p class="contact__error-message"></p>
             </section>
             <section class="contact__fieldset-section">
               <label for="message" class="contact__label">Votre message</label>
-              <textarea name="message" id="message" cols="30" rows="10" class="contact__text-area"></textarea>
+              <textarea name="message" name="message" id="message" cols="30" rows="10"
+                class="contact__text-area"></textarea>
+              <p class="contact__error-message"></p>
             </section>
           </fieldset>
           <button type="submit" class="button contact__submit-button">Envoyer</button>
         </form>
+
+        <div class="contact__validated-form hide">
+          <h2 class="contact__validated-form-message">Message envoyé avec succès!</h2>
+        </div>
       </div>
     </dialog>
 
@@ -203,7 +212,7 @@
         <template>
 
           <div class="images__post-container" data-post-id="${id}" data-photographers-id="${photographerId}"
-            data-publishing-date="${date}" data-likes="${likes}" data-title="${title}">
+            data-publishing-date="${date}" data-likes="${likes}" data-user-liked="false" data-title="${title}">
             <div class="images__post">
               <a href="#" title="${title}">
                 <img class="images__image" src="../assets/images/Posts photos/${image}"
@@ -221,12 +230,12 @@
         <!-- Template for a unique post with a video-->
         <template>
           <div class="images__post-container" data-post-id="${id}" data-photographers-id="${photographerId}"
-            data-publishing-date="${date}" data-likes="${likes}" data-title="${title}">
+            data-publishing-date="${date}" data-likes="${likes}" data-user-liked="false" data-title="${title}">
 
             <div class="images__post">
 
               <a href="#" title="${title}">
-                <video src="../assets/images/Posts photos/${video}" controls class="images__video">
+                <video src="../assets/images/Posts photos/${video}" class="images__video">
                 </video>
               </a>
 

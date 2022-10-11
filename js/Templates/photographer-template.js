@@ -38,7 +38,7 @@ class PhotographerProfileTemplate {
       if (image !== undefined) {
         postTemplate = `
           <div class="images__post-container" data-post-id="${id}" data-photographers-id="${photographerId}"
-            data-publishing-date="${date}" data-likes="${likes}" data-title="${title}">
+            data-publishing-date="${date}" data-likes="${likes}" data-user-liked="false" data-title="${title}">
             <div class="images__post">
               <a href="#" title="${title}">
                 <img class="images__image" src="../assets/images/Posts photos/${image}"
@@ -56,7 +56,7 @@ class PhotographerProfileTemplate {
         postTemplate = `
             
           <div class="images__post-container" data-post-id="${id}" data-photographers-id="${photographerId}"
-            data-publishing-date="${date}" data-likes="${likes}" data-title="${title}">
+            data-publishing-date="${date}" data-likes="${likes}" data-user-liked="false" data-title="${title}">
 
             <div class="images__post">
 

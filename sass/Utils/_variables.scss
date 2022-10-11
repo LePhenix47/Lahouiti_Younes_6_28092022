@@ -4,10 +4,12 @@ $body-bg-color: white;
 $buttons-color: white;
 $buttons-color--hover: black;
 $buttons-color--focus: black;
+$buttons-color--active: white;
 
 $buttons-bg-color: #901C1C;
 $buttons-bg-color--hover: #DB8876;
 $buttons-bg-color--focus: #DB8876;
+$buttons-bg-color--active: darken($buttons-bg-color, 10%);
 
 $text-color-primary: #D3573C;
 $text-color-secondary: #901C1C;
@@ -22,6 +24,13 @@ $dialog-backdrop-bg-color: #c4c4c466;
 $dialog-bg-color: #DB8876;
 $dialog-shadow-color: #0a0a0a4d;
 $dialog-lightbox-backdrop-bg-color: #E5E5E5;
+
+$input-message-color: white;
+$input-bg-color--invalid: #430000;
+$input-outline-color--invalid: #bc0f0f;
+
+$input-bg-color--valid: #004300;
+$input-outline-color--valid: limegreen;
 //
 
 $bg-color-primary: #D3573C;
@@ -50,6 +59,7 @@ $bg-color-likes-invoice: #DB8876;
 
     --buttons-bg-color:#{$buttons-bg-color};
     --buttons-bg-color--hover:#{$buttons-bg-color--hover};
+    --buttons-bg-color--active:#{$buttons-bg-color--active};
     --buttons-bg-color--focus:#{$buttons-bg-color--focus};
 
 
@@ -65,6 +75,14 @@ $bg-color-likes-invoice: #DB8876;
     --dialog-bg-color:#{$dialog-bg-color};
     --dialog-shadow-color:#{$dialog-shadow-color};
     --dialog-lightbox-backdrop-bg-color:#{$dialog-lightbox-backdrop-bg-color};
+
+    --input-message-color: #{$input-message-color};
+
+    --input-bg-color--invalid: #{$input-bg-color--invalid};
+    --input-outline-color--invalid: #{$input-outline-color--invalid};
+
+    --input-bg-color--valid:#{$input-bg-color--valid};
+    --input-outline-color--valid:#{$input-outline-color--valid};
     //
 
     --bg-color-primary:#{$bg-color-primary};

@@ -180,6 +180,10 @@ console.log("Id of photograph =", urlPhotographerId);
 function addPostFeatures() {
   const contactButton = profileContainer.querySelector(".button");
 
+  const nameOfContactModal = document.querySelector(".contact__title");
+
+  nameOfContactModal.innerHTML = `Contactez-moi <br/> ${photographerObject.name}`;
+
   const postsCard = postsContainer.querySelectorAll(".images__post-container");
   const postsCardArray = Array.from(postsCard);
 

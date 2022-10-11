@@ -1,5 +1,18 @@
+/*
+Part 1 → The contact modal
+*/
+
 //Function for the contact modal
 const modalContact = document.querySelector(".contact__modal");
+
+const formDataValidation = {
+  firstName: false,
+  lastName: false,
+  email: false,
+  message: false,
+};
+
+let formBuilder = new ContactFormBuilder();
 
 function displayContactModal() {
   //Adds the fade-in animation whenever the user opens the modal window and removes its class after the animation finished
@@ -11,21 +24,17 @@ function displayContactModal() {
   modalContact.showModal();
 
   const form = modalContact.querySelector(".contact__form");
-  const submitButton = modalContact.querySelector(".contact__submit-button");
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-  });
+  form.addEventListener("submit", handleForm);
 
-  submitButton.disabled = true;
+  const inputs = modalContact.querySelectorAll(".contact__input"); //⚠ NodeList
+  const inputsArray = Array.from(inputs);
 
-  let formBuilder = new ContactFormBuilder();
-
-  formBuilder
-    .setFirstName("fName")
-    .setLastName("lName")
-    .setEmail("email")
-    .setMessage("test 1234");
+  for (input of inputsArray) {
+    input.addEventListener("change", handleInputs);
+  }
+  const textArea = modalContact.querySelector(".contact__text-area");
+  textArea.addEventListener("change", handleInputs);
 
   console.log(formBuilder);
 
@@ -39,6 +48,149 @@ function displayContactModal() {
   });
 }
 
+function handleForm(e) {
+  e.preventDefault();
+
+  let result = [];
+  for (property in formDataValidation) {
+    result.push(formDataValidation[property]);
+  }
+
+  let arrayOfInvalidInputs = result.filter((inputBool) => {
+    return !inputBool;
+  });
+
+  let amountOfInvalidInputs = arrayOfInvalidInputs.length;
+
+  const validFormMessage = document.querySelector(".contact__validated-form");
+  if (!amountOfInvalidInputs) {
+    e.currentTarget.classList.add("hide");
+    validFormMessage.classList.remove("hide");
+
+    console.log("Form SUCCESSFULLY sent!", formBuilder);
+  } else {
+    validFormMessage.classList.add("hide");
+    e.currentTarget.classList.remove("hide");
+    console.log("Error, some inputs were incorrectly filled");
+  }
+
+  console.log(result);
+}
+
+function handleInputs() {
+  console.log("change!");
+  let inputElement = this;
+
+  let valueOfInput = inputElement.value;
+
+  let inputNameAttribute = inputElement.getAttribute("name");
+
+  const containerOfInput = inputElement.parentElement;
+
+  let errorParagraph = containerOfInput.querySelector(
+    ".contact__error-message"
+  );
+
+  console.log({
+    inputNameAttribute,
+    valueOfInput,
+    containerOfInput,
+    errorParagraph,
+  });
+  let valueIsOverTwoCharsLong = valueOfInput.length >= 2;
+  let valueIsOverTenCharsLong = valueOfInput.length >= 10;
+
+  let emailRegex =
+    /^([a-z A-Z 0-9\.-]+)@([a-z A-Z 0-9]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/;
+  switch (inputNameAttribute) {
+    case "name": {
+      let firstNameOrLastName =
+        inputElement.getAttribute("id") === "first-name"
+          ? "firstName"
+          : "lastName";
+      if (valueIsOverTwoCharsLong) {
+        console.log(formDataValidation["firstName"]);
+        formDataValidation[firstNameOrLastName] = true;
+        firstNameOrLastName === "firstName"
+          ? formBuilder.setFirstName(valueOfInput)
+          : formBuilder.setLastName(valueOfInput);
+        validateInput(inputElement, true);
+        errorParagraph.textContent = "";
+      } else {
+        formDataValidation[firstNameOrLastName] = false;
+        validateInput(inputElement, false);
+        errorParagraph.textContent =
+          "Veuillez remplir ce champ avec au moins 2 caractères";
+      }
+      break;
+    }
+    case "email": {
+      formDataValidation.email = true;
+      if (valueIsOverTwoCharsLong && emailRegex.test(valueOfInput)) {
+        validateInput(inputElement, true);
+        errorParagraph.textContent = "";
+        formBuilder.setEmail(valueOfInput);
+      } else {
+        formDataValidation.email = false;
+        validateInput(inputElement, false);
+        errorParagraph.textContent =
+          "Veuillez renter une email sous ce format: pseudonyme@domaine.extension";
+      }
+      break;
+    }
+    case "message": {
+      if (valueIsOverTenCharsLong) {
+        formDataValidation.message = true;
+        validateTextArea(inputElement, true);
+        errorParagraph.textContent = "";
+        formBuilder.setMessage(valueOfInput);
+      } else {
+        formDataValidation.message = false;
+        validateTextArea(inputElement, false);
+        errorParagraph.textContent =
+          "Veuillez écrire un message avec au moins 10 caractères";
+      }
+      break;
+    }
+  }
+}
+
+function validateInput(inputElement, inputValueIsValid) {
+  if (inputValueIsValid) {
+    inputElement.classList.remove("invalid-input");
+    inputElement.classList.add("valid-input");
+  } else {
+    inputElement.classList.remove("valid-input");
+    inputElement.classList.add("invalid-input");
+  }
+}
+
+function validateTextArea(textAreaElement, textAreaValueIsValid) {
+  if (textAreaValueIsValid) {
+    textAreaElement.classList.remove("invalid-text-area");
+    textAreaElement.classList.add("valid-text-area");
+  } else {
+    textAreaElement.classList.remove("valid-text-area");
+    textAreaElement.classList.add("invalid-text-area");
+  }
+}
+/* 
+Part 2 → The lightbox modal
+*/
+
+/*
+  This object will contain ALL the useful informations to navigate between the different images
+  Here's how it works:
+  
+  Direction → Used to know if the user clicked the previous or next image
+  Actual Index → Index of the image in the modal that the user clicked 
+  Next Index → Index of either the previous or next image, dependant on the Actual Index and the Direction
+  */
+const carouselInfo = {
+  direction: 0,
+  actualIndex: 0,
+  nextIndex: 0,
+};
 //Function for the lightbox-carousel modal
 const modalLightbox = document.querySelector(".lightbox__modal");
 let imageUrl = "";
@@ -67,11 +219,18 @@ function displayLightboxModal(e) {
 
   console.table(arrayOfImageFileNames);
 
-  //We give a value to our variables to get the URL, the file name and the title of the image
+  //We give a value to our variables to get the URL, the file name and the description of the image
   imageUrl = e.currentTarget.children[0].getAttribute("src");
   imageFileName = imageUrl.split("/Posts photos/")[1];
   postDescription = e.currentTarget.getAttribute("title");
+
   console.log({ imageUrl, imageFileName, postDescription });
+  console.log(
+    "Index of image: ",
+    arrayOfImageFileNames.indexOf(imageFileName) < 0 ? "Not found" : "found!",
+    ", value = ",
+    arrayOfImageFileNames.indexOf(imageFileName)
+  );
 
   updateModalImage(imageFileName, postDescription);
   //
@@ -116,19 +275,6 @@ function closeModalFadeOut(modal) {
   }, 250);
 }
 
-/*
-  This object will contain ALL the useful informations to navigate between the different images
-  Here's how it works:
-  
-  Direction → Used to know if the user clicked the previous or next image
-  Actual Index → Index of the image in the modal that the user clicked 
-  Next Index → Index of either the previous or next image, dependant on the Actual Index and the Direction
-  */
-const carouselInfo = {
-  direction: 0,
-  actualIndex: 0,
-  nextIndex: 0,
-};
 //Function that changes the image displayed in the modal window of the lightbox
 function changeImage(
   arrayOfImageFileNames,

@@ -4,6 +4,9 @@ function addLikeToPost() {
   console.log("click");
   let likeButton = this;
 
+  const postCard = this.parentElement.parentElement.parentElement;
+  console.log(postCard);
+
   let likeButtonHasAlreadyBeenPressed =
     likeButton.classList.contains("active-like");
 
@@ -20,7 +23,9 @@ function addLikeToPost() {
       likeButton,
       postLikes,
       amountOfLikes,
-      amountOfLikesParagraph
+      amountOfLikesParagraph,
+      postCard,
+      false
     );
     console.log("True → disliking");
     console.log(likeButton.textContent);
@@ -34,7 +39,9 @@ function addLikeToPost() {
       likeButton,
       postLikes,
       amountOfLikes,
-      amountOfLikesParagraph
+      amountOfLikesParagraph,
+      postCard,
+      true
     );
 
     console.log("False → liking");
@@ -48,7 +55,9 @@ function updateAmountOfLikes(
   buttonElement,
   likesOfPost,
   amountOfLikes,
-  amountOfLikesParagraph
+  amountOfLikesParagraph,
+  postCard,
+  likedOrDisliked
 ) {
   console.log(buttonElement.innerHTML);
   buttonElement.innerHTML = `${likesOfPost} <i class="fa-solid fa-heart"></i>`;
@@ -57,8 +66,8 @@ function updateAmountOfLikes(
     amountOfLikesParagraph,
   };
 
-  const postCard = document.querySelector(".images__post-container");
   postCard.setAttribute("data-likes", `${likesOfPost}`);
+  postCard.setAttribute("data-user-liked", `${likedOrDisliked}`);
   console.log(updatedStickyBarData);
   PhotographerApp.updateUIOfStickyBar(updatedStickyBarData);
 }

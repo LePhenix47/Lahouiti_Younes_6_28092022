@@ -63,3 +63,37 @@
 .active-sort-button-icon {
     rotate: 180deg;
 }
+
+.invalid-input {
+    background-color: var(--input-bg-color--invalid);
+    outline: 2px solid var(--input-outline-color--invalid);
+    outline-offset: -5px;
+    color: var(--input-message-color);
+    border-radius: var(--buttons-border-radius) var(--buttons-border-radius) 0 0 !important;
+}
+
+.invalid-text-area {
+    background-color: var(--input-bg-color--invalid);
+    outline: 2px solid var(--input-outline-color--invalid);
+    outline-offset: -5px;
+    color: var(--input-message-color);
+    border-radius: var(--buttons-border-radius) var(--buttons-border-radius) 0 0;
+    height: 75px !important;
+}
+
+.valid-input {
+    background-color: var(--input-bg-color--valid);
+    outline: 2px solid var(--input-outline-color--valid);
+    outline-offset: -5px;
+    color: var(--input-message-color);
+    border-radius: var(--buttons-border-radius) var(--buttons-border-radius) 0 0;
+}
+
+.valid-text-area {
+    background-color: var(--input-bg-color--valid);
+    outline: 2px solid var(--input-outline-color--valid);
+    outline-offset: -5px;
+    color: var(--input-message-color);
+    border-radius: var(--buttons-border-radius) var(--buttons-border-radius) 0 0;
+    height: 75px;
+}
