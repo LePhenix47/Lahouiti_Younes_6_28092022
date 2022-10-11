@@ -12,9 +12,8 @@ function sortPostsForMobile() {
 
 */
 function sortPostsForWidescreens() {
-  let buttonElement = this;
   console.log("click!");
-
+  console.log(this);
   const iconLabelContainer = document.querySelector(
     ".dropdown-menu__icon-container"
   );
@@ -28,13 +27,15 @@ function sortPostsForWidescreens() {
   if (dropDownMenuNotOpened) {
     dropDownMenu.classList.remove("hide");
     iconLabelContainer.classList.add("active-sort-button-icon");
+    this.setAttribute("aria-expanded", "true");
   } else {
     dropDownMenu.classList.add("hide");
     iconLabelContainer.classList.remove("active-sort-button-icon");
+    this.setAttribute("aria-expanded", "false");
   }
 
   for (item of dropdownMenuItems) {
-    let itemHasSameValueAsButton = item.innerText === buttonElement.innerText;
+    let itemHasSameValueAsButton = item.innerText === this.innerText;
 
     if (itemHasSameValueAsButton) {
       item.classList.add("hide");

@@ -115,10 +115,14 @@ function handleInputs() {
           ? formBuilder.setFirstName(valueOfInput)
           : formBuilder.setLastName(valueOfInput);
         validateInput(inputElement, true);
-        errorParagraph.textContent = "";
+        inputElement.setAttribute("aria-invalid", "false");
+        errorParagraph.classList.add("hide");
       } else {
+        inputElement.setAttribute("aria-invalid", "true");
         formDataValidation[firstNameOrLastName] = false;
         validateInput(inputElement, false);
+        errorParagraph.classList.remove("hide");
+
         errorParagraph.textContent =
           "Veuillez remplir ce champ avec au moins 2 caractères";
       }
@@ -128,11 +132,15 @@ function handleInputs() {
       formDataValidation.email = true;
       if (valueIsOverTwoCharsLong && emailRegex.test(valueOfInput)) {
         validateInput(inputElement, true);
-        errorParagraph.textContent = "";
+        errorParagraph.classList.add("hide");
         formBuilder.setEmail(valueOfInput);
+        inputElement.setAttribute("aria-invalid", "false");
       } else {
         formDataValidation.email = false;
+        inputElement.setAttribute("aria-invalid", "true");
         validateInput(inputElement, false);
+        errorParagraph.classList.remove("hide");
+
         errorParagraph.textContent =
           "Veuillez renter une email sous ce format: pseudonyme@domaine.extension";
       }
@@ -142,11 +150,15 @@ function handleInputs() {
       if (valueIsOverTenCharsLong) {
         formDataValidation.message = true;
         validateTextArea(inputElement, true);
-        errorParagraph.textContent = "";
+        errorParagraph.classList.add("hide");
         formBuilder.setMessage(valueOfInput);
+        inputElement.setAttribute("aria-invalid", "false");
       } else {
         formDataValidation.message = false;
+        inputElement.setAttribute("aria-invalid", "true");
         validateTextArea(inputElement, false);
+        errorParagraph.classList.remove("hide");
+
         errorParagraph.textContent =
           "Veuillez écrire un message avec au moins 10 caractères";
       }

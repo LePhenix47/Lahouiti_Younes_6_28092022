@@ -20,7 +20,7 @@ class StickyBarTemplate {
       "content",
       `Découvrez les photos prises par ${photographerObject.name}!`
     );
-    titleMetaTag.textContent = `Fisheye - ${photographerObject.name}`;
+    titleMetaTag.textContent = `Fisheye - Page du compte de ${photographerObject.name}`;
   }
 
   updateStickyBar() {

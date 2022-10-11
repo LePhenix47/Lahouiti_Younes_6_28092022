@@ -66,8 +66,11 @@ function updateAmountOfLikes(
     amountOfLikesParagraph,
   };
 
+  let likeButton = postCard.querySelector(".images__post-like-button");
+
   postCard.setAttribute("data-likes", `${likesOfPost}`);
   postCard.setAttribute("data-user-liked", `${likedOrDisliked}`);
+  likeButton.setAttribute("aria-pressed", `${likedOrDisliked}`);
   console.log(updatedStickyBarData);
   PhotographerApp.updateUIOfStickyBar(updatedStickyBarData);
 }
