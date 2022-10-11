@@ -1,6 +1,8 @@
 //SASS Variables
 $body-bg-color: white;
 
+$tab-shadow-color: darkblue;
+
 $buttons-color: white;
 $buttons-color--hover: black;
 $buttons-color--focus: black;
@@ -53,6 +55,9 @@ $bg-color-likes-invoice: #DB8876;
 :root {
     //Color variables
     --body-bg-color: #{$body-bg-color};
+
+    --tab-shadow-color: #{$tab-shadow-color};
+
     --buttons-color:#{$buttons-color};
     --buttons-color--hover:#{$buttons-color--hover};
     --buttons-color--focus:#{$buttons-color--focus};

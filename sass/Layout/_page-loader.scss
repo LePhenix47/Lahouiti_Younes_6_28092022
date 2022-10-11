@@ -12,7 +12,7 @@
     z-index: 4;
     background-color: var(--odd-card-bg-color);
 
-    @include center-flex(20px);
+    @include center-flex(35px);
 
     -webkit-animation-name: remove-loader;
     animation-name: remove-loader;
@@ -64,22 +64,22 @@
 
 @-webkit-keyframes grow-circle {
     from {
-        scale: 50%;
+        scale: 25%;
     }
 
     to {
-        scale: 150%;
+        scale: 175%;
     }
 }
 
 
 @keyframes grow-circle {
     from {
-        scale: 50%;
+        scale: 20%;
     }
 
     to {
-        scale: 150%;
+        scale: 175%;
     }
 }
 

@@ -502,7 +502,6 @@
 
     &__post {
         @include center-flex-column;
-        overflow: hidden;
         max-width: 350px;
 
         @include mobile-only {
