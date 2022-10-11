@@ -246,10 +246,29 @@ function displayLightboxModal(e) {
 
   updateModalImage(imageFileName, postDescription);
   //
-  const nextButton = modalLightbox.querySelector(".lightbox__button-next");
+  const nextButton = modalLightbox.querySelector(".lightbox__button-next"); //Key code = 37
   const previousButton = modalLightbox.querySelector(
     ".lightbox__button-previous"
-  );
+  ); //Key code = 39
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") {
+      console.log("Left");
+      changeImage(
+        arrayOfImageFileNames,
+        imageFileName,
+        event.key,
+        arrayOfDescriptions
+      );
+    } else if (event.key === "ArrowRight") {
+      console.log("Right");
+      changeImage(
+        arrayOfImageFileNames,
+        imageFileName,
+        event.key,
+        arrayOfDescriptions
+      );
+    }
+  });
 
   nextButton.addEventListener("click", (event) => {
     changeImage(
@@ -299,12 +318,15 @@ function changeImage(
 
   console.table(arrayOfImageFileNames);
   console.log(carouselInfo.actualIndex);
-
-  carouselInfo.direction = event.currentTarget.children[0].classList.contains(
-    "fa-chevron-left"
-  )
-    ? -1
-    : 1;
+  if (typeof event !== "string") {
+    carouselInfo.direction = event.currentTarget.children[0].classList.contains(
+      "fa-chevron-left"
+    )
+      ? -1
+      : 1;
+  } else {
+    carouselInfo.direction = event.includes("ArrowLeft") ? -1 : 1;
+  }
 
   let userClicksNextOnLastImage =
     carouselInfo.direction + carouselInfo.actualIndex >
