@@ -246,28 +246,28 @@ function displayLightboxModal(e) {
 
   updateModalImage(imageFileName, postDescription);
   //
-  const nextButton = modalLightbox.querySelector(".lightbox__button-next"); //Key code = 37
+  const nextButton = modalLightbox.querySelector(".lightbox__button-next"); //Key code = 37 → ArrowLeft
   const previousButton = modalLightbox.querySelector(
     ".lightbox__button-previous"
-  ); //Key code = 39
+  ); //Key code = 39 → ArrowRight
   window.addEventListener("keydown", (event) => {
     if (event.key === "ArrowLeft") {
-      console.log("Left");
-      changeImage(
-        arrayOfImageFileNames,
-        imageFileName,
-        event.key,
-        arrayOfDescriptions
+      console.log(
+        "%cLeft",
+        "padding: 5px; color: black; background: yellow; font-size: 16px"
       );
     } else if (event.key === "ArrowRight") {
-      console.log("Right");
-      changeImage(
-        arrayOfImageFileNames,
-        imageFileName,
-        event.key,
-        arrayOfDescriptions
+      console.log(
+        "%cRight",
+        "padding: 5px; color: white; background: blue; font-size: 16px"
       );
     }
+    changeImage(
+      arrayOfImageFileNames,
+      imageFileName,
+      event.key,
+      arrayOfDescriptions
+    );
   });
 
   nextButton.addEventListener("click", (event) => {
