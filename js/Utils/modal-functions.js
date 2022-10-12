@@ -252,7 +252,7 @@ function displayLightboxModal(e) {
   ); //Key code = 39 → ArrowRight
 
   const navigateImagesInModal = (event) => {
-    if (event.key) {
+    if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
       //If the user clicked on the modal
       event.key === "ArrowLeft"
         ? console.log(
