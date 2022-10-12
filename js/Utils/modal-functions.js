@@ -293,6 +293,9 @@ function displayLightboxModal(e) {
   );
 
   closeModalButton.addEventListener("click", () => {
+    carouselInfo.nextIndex = 0;
+    carouselInfo.actualIndex = 0;
+    carouselInfo.direction = 0;
     closeModalFadeOut(modalLightbox);
   });
 }
@@ -317,7 +320,6 @@ function changeImage(
     arrayOfImageFileNames.indexOf(currentImageFileName);
 
   console.table(arrayOfImageFileNames);
-  console.log(carouselInfo.actualIndex);
   if (typeof event !== "string") {
     carouselInfo.direction = event.currentTarget.children[0].classList.contains(
       "fa-chevron-left"
@@ -342,17 +344,18 @@ function changeImage(
   } else {
     carouselInfo.nextIndex = carouselInfo.direction + carouselInfo.actualIndex;
   }
-  console.log(
-    "%c" + JSON.stringify(carouselInfo),
-    "background: green; font-size: 20px; padding: 5px"
-  );
+  console.log({ carouselInfo });
 
   let nextImageFileName = arrayOfImageFileNames[carouselInfo.nextIndex];
   let nextPostDescription = arrayOfImageFileNames[carouselInfo.nextIndex];
 
   imageFileName = nextImageFileName;
   postDescription = nextPostDescription;
-  console.log(nextImageFileName);
+
+  console.group("Carousel info + image & description of the next post");
+  console.log(carouselInfo);
+  console.log({ nextImageFileName, nextPostDescription });
+  console.groupEnd("Carousel info + image & description of the next post");
 
   updateModalImage(
     arrayOfImageFileNames[carouselInfo.nextIndex],
