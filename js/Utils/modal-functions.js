@@ -250,54 +250,51 @@ function displayLightboxModal(e) {
   const previousButton = modalLightbox.querySelector(
     ".lightbox__button-previous"
   ); //Key code = 39 → ArrowRight
-  window.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowLeft") {
-      console.log(
-        "%cLeft",
-        "padding: 5px; color: black; background: yellow; font-size: 16px"
+
+  const navigateImagesInModal = (event) => {
+    if (event.key) {
+      //If the user clicked on the modal
+      event.key === "ArrowLeft"
+        ? console.log(
+            "%cLeft",
+            "padding: 5px; color: black; background: yellow; font-size: 16px"
+          )
+        : console.log(
+            "%cRight",
+            "padding: 5px; color: white; background: blue; font-size: 16px"
+          );
+      changeImage(
+        arrayOfImageFileNames,
+        imageFileName,
+        event.key,
+        arrayOfDescriptions
       );
-    } else if (event.key === "ArrowRight") {
-      console.log(
-        "%cRight",
-        "padding: 5px; color: white; background: blue; font-size: 16px"
+    } else {
+      changeImage(
+        arrayOfImageFileNames,
+        imageFileName,
+        event,
+        arrayOfDescriptions
       );
     }
-    changeImage(
-      arrayOfImageFileNames,
-      imageFileName,
-      event.key,
-      arrayOfDescriptions
-    );
-  });
+  };
 
-  nextButton.addEventListener("click", (event) => {
-    changeImage(
-      arrayOfImageFileNames,
-      imageFileName,
-      event,
-      arrayOfDescriptions
-    );
-  });
-  previousButton.addEventListener("click", (event) => {
-    changeImage(
-      arrayOfImageFileNames,
-      imageFileName,
-      event,
-      arrayOfDescriptions
-    );
-  });
+  window.addEventListener("keydown", navigateImagesInModal);
+  nextButton.addEventListener("click", navigateImagesInModal);
+  previousButton.addEventListener("click", navigateImagesInModal);
 
   //
   const closeModalButton = modalLightbox.querySelector(
     ".lightbox__button-close-dialog"
   );
 
-  closeModalButton.addEventListener("click", () => {
-    carouselInfo.nextIndex = 0;
-    carouselInfo.actualIndex = 0;
-    carouselInfo.direction = 0;
+  const closeModalAndRemoveEventListeners = () => {
+    window.removeEventListener("keydown", navigateImagesInModal);
+    nextButton.removeEventListener("click", navigateImagesInModal);
+    previousButton.removeEventListener("click", navigateImagesInModal);
     closeModalFadeOut(modalLightbox);
-  });
+  };
+  closeModalButton.addEventListener("click", closeModalAndRemoveEventListeners);
 }
 
 //Function that closes the modal window with a fade out animation
