@@ -189,6 +189,10 @@
     &__submit-button {
         border-radius: var(--buttons-border-radius);
 
+        &:focus {
+            background-color: var(--bg-color-quaternary);
+        }
+
         @include mobile-only {
             width: 100%;
         }
