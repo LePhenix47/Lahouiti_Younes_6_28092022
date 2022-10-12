@@ -375,6 +375,7 @@ function updateModalImage(newImageFileName, newPostDescription) {
     videoElement.classList.add("hide");
     //Element to be added
     imageElement.classList.remove("hide");
+    imageElement.setAttribute("alt", `Photo nommée '${newPostDescription}'`);
     imageElement.setAttribute(
       "src",
       `../assets/images/Posts photos/${newImageFileName}`
@@ -384,6 +385,7 @@ function updateModalImage(newImageFileName, newPostDescription) {
     imageElement.classList.add("hide");
     //Element to be added
     videoElement.classList.remove("hide");
+    videoElement.setAttribute("alt", `Vidéo nommée '${newPostDescription}'`);
     videoElement.setAttribute(
       "src",
       `../assets/images/Posts photos/${newImageFileName}`

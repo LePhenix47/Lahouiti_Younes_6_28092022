@@ -18,6 +18,8 @@ function sortPostsForWidescreens() {
     ".dropdown-menu__icon-container"
   );
 
+  let eventIsNotWindow = this.window === false;
+
   const dropDownMenu = document.querySelector(".dropdown-menu");
   const dropdownMenuItems = document.querySelectorAll(
     ".dropdown-menu__list-item"
@@ -27,21 +29,14 @@ function sortPostsForWidescreens() {
   if (dropDownMenuNotOpened) {
     dropDownMenu.classList.remove("hide");
     iconLabelContainer.classList.add("active-sort-button-icon");
-    this.setAttribute("aria-expanded", "true");
+    eventIsNotWindow ? this.setAttribute("aria-expanded", "true") : "";
   } else {
     dropDownMenu.classList.add("hide");
     iconLabelContainer.classList.remove("active-sort-button-icon");
-    this.setAttribute("aria-expanded", "false");
+    eventIsNotWindow ? this.setAttribute("aria-expanded", "false") : "";
   }
 
   for (item of dropdownMenuItems) {
-    let itemHasSameValueAsButton = item.innerText === this.innerText;
-
-    if (itemHasSameValueAsButton) {
-      item.classList.add("hide");
-    } else {
-      item.classList.remove("hide");
-    }
     item.addEventListener("click", setItemName);
   }
 }

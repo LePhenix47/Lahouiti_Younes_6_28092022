@@ -58,12 +58,13 @@
   <!-- Main content of the page   -->
   <main class="main" role="main" aria-label="Contenu de la page principale de la page du photographe" tabindex="0">
     <!--   Sticky bar for the price and the amount of likes   -->
-    <div class="main__invoice-likes" tabindex="1">
+    <div class="main__invoice-likes" tabindex="0">
       <div class="main__likes">
-        <p aria-label="likes" class="main__amount-of-likes" tabindex="1">69 420 <i class="fa-solid fa-heart"></i></p>
+        <p aria-label="Le photographe accumule 69 420 likes" class="main__amount-of-likes" tabindex="0">69 420 <i
+            class="fa-solid fa-heart"></i></p>
       </div>
       <div class="main__invoice">
-        <p aria-label="Tarif du photographe" class="main__price" tabindex="1">[FACTURE EN €]</p>
+        <p aria-label="Et tarif du photographe à partir de ??€/jour" class="main__price" tabindex="0">[FACTURE EN €]</p>
       </div>
     </div>
     <!-- Modal window to contact the photographer -->
@@ -74,34 +75,39 @@
             [NOM] [PRÉNOM]
           </h1>
           <button type="button" class="contact__button-close-dialog"><i
-              class="fa-solid fa-xmark contact__button-close-dialog-icon"></i></button>
+              class="fa-solid fa-xmark contact__button-close-dialog-icon"
+              aria-label="Bouton pour fermer la boîte de dialogue"></i></button>
         </div>
         <form action="photographer.html" method="dialog" class="contact__form" role="form">
           <fieldset class="contact__fieldset">
             <legend class="contact__legend">Veuillez remplir ces champs afin de contacter le photographe</legend>
             <section class="contact__fieldset-section" role="group">
               <label for="last-name" class="contact__label">Nom</label>
-              <input type="text" name="name" id="last-name" class="contact__input" aria-invalid="false" />
-              <p class="contact__error-message hide" tabindex="0"></p>
+              <input type="text" name="name" id="last-name" class="contact__input" aria-invalid="false"
+                aria-errormessage="lat-name-error" />
+              <p class="contact__error-message hide" tabindex="0" id="last-name-error"></p>
             </section>
             <section class="contact__fieldset-section" role="group">
               <label for="first-name" class="contact__label">Prénom</label>
-              <input type="text" name="name" id="first-name" class="contact__input" aria-invalid="false" />
-              <p class="contact__error-message hide" tabindex="0"></p>
+              <input type="text" name="name" id="first-name" class="contact__input" aria-invalid="false"
+                aria-errormessage="first-name-error" />
+              <p class="contact__error-message hide" tabindex="0" id="first-name-error"></p>
             </section>
             <section class="contact__fieldset-section" role="group">
               <label for="email" class="contact__label">Email</label>
-              <input type="email" name="email" id="email" class="contact__input" aria-invalid="false" />
-              <p class="contact__error-message hide" tabindex="0"></p>
+              <input type="email" name="email" id="email" class="contact__input" aria-invalid="false"
+                aria-errormessage="email-error" />
+              <p class="contact__error-message hide" tabindex="0" id="email-error"></p>
             </section>
             <section class="contact__fieldset-section" role="group">
               <label for="message" class="contact__label">Votre message</label>
-              <textarea name="message" name="message" id="message" cols="30" rows="10"
-                class="contact__text-area"></textarea>
-              <p class="contact__error-message hide" tabindex="0"></p>
+              <textarea name="message" name="message" id="message" cols="30" rows="10" class="contact__text-area"
+                aria-errormessage="message-error"></textarea>
+              <p class="contact__error-message hide" tabindex="0" id="message-error"></p>
             </section>
           </fieldset>
-          <button type="submit" class="button contact__submit-button">Envoyer</button>
+          <button type="submit" class="button contact__submit-button"
+            aria-label="Bouton pour envoyer le message">Envoyer</button>
         </form>
 
         <div class="contact__validated-form hide">
@@ -114,15 +120,16 @@
     <!--   Modal window for the carousel   -->
     <dialog class="lightbox__modal" role="dialog">
       <div class="lightbox__content">
-        <button type="button" class="lightbox__button-close-dialog">
+        <button type="button" class="lightbox__button-close-dialog"
+          aria-label="Bouton pour fermer la boîte de dialogue">
           <i class="fa-solid fa-xmark lightbox__button-close-dialog-icon"></i>
         </button>
 
-        <button type="button" class="lightbox__button-previous">
+        <button type="button" class="lightbox__button-previous" aria-label="Bouton pour passer à l'image précédente">
           <i class="fa-solid fa-chevron-left lightbox__button-previous-icon"></i>
         </button>
 
-        <button type="button" class="lightbox__button-next">
+        <button type="button" class="lightbox__button-next" aria-label="Bouton pour passer à l'image successive">
           <i class="fa-solid fa-chevron-right lightbox__button-next-icon"></i>
         </button>
 
@@ -154,7 +161,8 @@
           </div>
         </div>
         <div class="profile__contact">
-          <button type="button" class="button button--rounded" tabindex="0">Contactez-moi</button>
+          <button type="button" class="button button--rounded" tabindex="0"
+            aria-label="Bouton pour ouvrir la boîte de dialogue pour contacter le photographe">Contactez-moi</button>
         </div>
         <div class="profile__image-container">
           <img src="../assets/images/Photographs Profile pictures/${portrait}"
@@ -176,13 +184,15 @@
             <i class="fa-solid fa-chevron-down dropdown-menu__icon"></i>
           </div>
           <!--      Will be  displayed only on mobile devices   -->
-          <select name="orderby" class="select select--mobile-only" id="select">
+          <select name="orderby" class="select select--mobile-only" id="select"
+            aria-level="Bouton pour ouvrir le menu déroulant">
             <option value="popularité" class="option">Popularité</option>
             <option value="date" class="option">Date</option>
             <option value="titre" class="option">Titre</option>
           </select>
           <!--      Will be displayed on widescreen devices      -->
-          <button class="dropdown-menu__sort-button" type="button" role="combobox" aria-expanded="false">
+          <button class="dropdown-menu__sort-button" type="button" role="combobox" aria-expanded="false"
+            aria-level="Bouton pour ouvrir le menu déroulant">
             Popularité
           </button>
           <div class="dropdown-menu hide">
@@ -218,14 +228,15 @@
           <div class="images__post-container" data-post-id="${id}" data-photographers-id="${photographerId}"
             data-publishing-date="${date}" data-likes="${likes}" data-user-liked="false" data-title="${title}">
             <div class="images__post">
-              <a href="#" title="${title}" role="link">
+              <a href="#" title="Image nommée ${title}" role="link">
                 <img class="images__image" src="../assets/images/Posts photos/${image}"
                   alt="'${title}' fait en ${new Date(date).getFullYear()}" />
               </a>
               <div class="images__post-text">
                 <p class="images__post-description">${title}</p>
-                <button class="images__post-like-button" title="Mettre un like au post '${title}'?"
-                  aria-pressed="false">${likes} <i class="fa-solid fa-heart"></i></button>
+                <button class="images__post-like-button" title="Mettre un like au post '${title}'?" aria-pressed="false"
+                  aria-label="Bouton pour liker la publication nommée '${title}'">${likes} <i
+                    class="fa-solid fa-heart"></i></button>
               </div>
             </div>
           </div>
@@ -239,14 +250,15 @@
 
             <div class="images__post">
 
-              <a href="#" title="${title}" role="link">
+              <a href="#" title="Video nommée ${title}" role="link">
                 <video src="../assets/images/Posts photos/${video}" class="images__video">
                 </video>
               </a>
-
               <div class="images__post-text">
                 <p class="images__post-description">${title}</p>
-                <button class="images__post-like-button">${likes} <i class="fa-solid fa-heart"></i></button>
+                <button class="images__post-like-button" title="Mettre un like au post '${title}'?" aria-pressed="false"
+                  aria-label="Bouton pour liker la publication nommée '${title}'">${likes} <i
+                    class="fa-solid fa-heart"></i></button>
               </div>
 
             </div>

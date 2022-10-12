@@ -15,7 +15,16 @@ class StickyBarTemplate {
     } = this.photographerObject;
 
     amountOfLikesParagraph.innerHTML = `${amountOfLikes} <i class="fa-solid fa-heart"></i>`;
+    amountOfLikesParagraph.setAttribute(
+      "aria-label",
+      `Le photographe accumule ${amountOfLikes} likes`
+    );
     priceParagraph.textContent = `${photographerObject.price}€ / jour`;
+    profileContainer.setAttribute(
+      "aria-label",
+      `
+    Et le tarif du photographe à partir de ${photographerObject.price} euros par jour`
+    );
     descriptionMetaTag.setAttribute(
       "content",
       `Découvrez les photos prises par ${photographerObject.name}!`
