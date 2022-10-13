@@ -1,7 +1,7 @@
 class IndexApp {
   constructor() {
     this.usersDataApi = new PhotographersApi(
-      "http://127.0.0.1:5500/P6/workstation/data/photographers.json"
+      "../../../../P6/workstation/data/photographers.json"
     );
   }
 

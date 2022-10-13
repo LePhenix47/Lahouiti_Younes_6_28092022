@@ -9,7 +9,9 @@ class Api {
       let response = await fetch(this.url);
 
       if (!response.ok) {
-        throw `An error has occured while attempting to retrieve data: ${response}`;
+        throw `An error has occured while attempting to retrieve data: ${JSON.stringify(
+          response
+        )}`;
       }
       data = await response.json();
     } catch (apiError) {

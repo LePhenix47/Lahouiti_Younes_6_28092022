@@ -108,5 +108,15 @@ function sortPosts(element) {
   );
   photographerMediaArray = sortedArray;
   PhotographerApp.changeUIOfPosts(sortedArray, postsContainer);
+  /*
+  for (post of sortedArray) {
+    let postHasImageOrVideo = post.image !== undefined ? "image" : "video";
+    PhotographerApp.changeUIOfPostsV2(
+      post,
+      postHasImageOrVideo,
+      postsContainer
+    );
+  }
+  */
   addPostFeatures();
 }

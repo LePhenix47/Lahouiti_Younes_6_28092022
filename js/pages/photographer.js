@@ -3,7 +3,7 @@
 class PhotographerApp {
   constructor() {
     this.usersDataApi = new PhotographersApi(
-      "http://127.0.0.1:5500/P6/workstation/data/photographers.json"
+      "../../../../P6/workstation/data/photographers.json"
     );
   }
 
@@ -87,6 +87,15 @@ class PhotographerApp {
     ).createPosts();
   }
 
+  static changeUIOfPostsV2(postObject, type, container) {
+    let template = new PhotographerFactory(postObject, type);
+    console.log(
+      "%c" + JSON.stringify(template),
+      "font-size: 16px; padding: 10px; background: green"
+    );
+    container.innerHTML += template;
+  }
+
   static updateUIOfStickyBar(photographerObject) {
     new StickyBarTemplate(photographerObject).updateStickyBar();
   }
@@ -158,7 +167,18 @@ launchPhotographerApp.then((data) => {
   //Calling static methods to add fill the page
   PhotographerApp.changeUIOfStickyBar(stickyBarData);
   PhotographerApp.changeUIOfProfile(photographerObject, profileContainer);
-  PhotographerApp.changeUIOfPosts(photographerMediaArray, postsContainer);
+
+  // PhotographerApp.changeUIOfPosts(photographerMediaArray, postsContainer);
+  console.table(photographerMediaArray);
+  //
+  for (post of photographerMediaArray) {
+    let postHasImageOrVideo = post.image !== undefined ? "image" : "video";
+    PhotographerApp.changeUIOfPostsV2(
+      post,
+      postHasImageOrVideo,
+      postsContainer
+    );
+  }
 
   console.dir(photographerObject);
   console.table(photographerMediaArray);

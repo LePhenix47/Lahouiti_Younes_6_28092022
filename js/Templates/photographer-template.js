@@ -30,7 +30,7 @@ class PhotographerProfileTemplate {
     return profileTemplate;
   }
 
-  //Could've used a factory pattern here
+  //changeUIOfPosts
   createPosts() {
     let postTemplate = "";
     let postsCards = "";
