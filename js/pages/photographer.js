@@ -170,7 +170,7 @@ launchPhotographerApp.then((data) => {
   PhotographerApp.changeUIOfStickyBar(stickyBarData);
   PhotographerApp.changeUIOfProfile(photographerObject, profileContainer);
 
-  // PhotographerApp.changeUIOfPosts(photographerMediaArray, postsContainer);
+  PhotographerApp.changeUIOfPosts(photographerMediaArray, postsContainer);
   console.table(photographerMediaArray);
   //
   for (post of photographerMediaArray) {
