@@ -36,8 +36,6 @@ function displayContactModal() {
   const textArea = modalContact.querySelector(".contact__text-area");
   textArea.addEventListener("change", handleInputs);
 
-  console.log(formBuilder);
-
   //
   const closeModalButton = modalContact.querySelector(
     ".contact__button-close-dialog"
@@ -73,12 +71,9 @@ function handleForm(e) {
     e.currentTarget.classList.remove("hide");
     console.log("Error, some inputs were incorrectly filled");
   }
-
-  console.log(result);
 }
 
 function handleInputs() {
-  console.log("change!");
   let inputElement = this;
 
   let valueOfInput = inputElement.value;
@@ -91,12 +86,6 @@ function handleInputs() {
     ".contact__error-message"
   );
 
-  console.log({
-    inputNameAttribute,
-    valueOfInput,
-    containerOfInput,
-    errorParagraph,
-  });
   let valueIsOverTwoCharsLong = valueOfInput.length >= 2;
   let valueIsOverTenCharsLong = valueOfInput.length >= 10;
 
@@ -109,7 +98,6 @@ function handleInputs() {
           ? "firstName"
           : "lastName";
       if (valueIsOverTwoCharsLong) {
-        console.log(formDataValidation["firstName"]);
         formDataValidation[firstNameOrLastName] = true;
         firstNameOrLastName === "firstName"
           ? formBuilder.setFirstName(valueOfInput)
@@ -165,6 +153,7 @@ function handleInputs() {
       break;
     }
   }
+  console.log(formBuilder);
 }
 
 function validateInput(inputElement, inputValueIsValid) {
@@ -217,9 +206,6 @@ function displayLightboxModal(e) {
     modalLightbox.classList.remove("fade-in");
   }, 250);
 
-  console.log(e.target);
-  console.log(this);
-
   //This array contains the different image urls
   let arrayOfImageFileNames = photographerMediaArray.map((post) => {
     return post.image || post.video;
@@ -236,7 +222,6 @@ function displayLightboxModal(e) {
   imageFileName = imageUrl.split("/Posts photos/")[1];
   postDescription = e.currentTarget.getAttribute("title");
 
-  console.log({ imageUrl, imageFileName, postDescription });
   console.log(
     "Index of image: ",
     arrayOfImageFileNames.indexOf(imageFileName) < 0 ? "Not found" : "found!",
@@ -341,7 +326,6 @@ function changeImage(
   } else {
     carouselInfo.nextIndex = carouselInfo.direction + carouselInfo.actualIndex;
   }
-  console.log({ carouselInfo });
 
   let nextImageFileName = arrayOfImageFileNames[carouselInfo.nextIndex];
   let nextPostDescription = arrayOfImageFileNames[carouselInfo.nextIndex];
@@ -367,7 +351,6 @@ function updateModalImage(newImageFileName, newPostDescription) {
   const imageDescriptionElement = document.querySelector(
     ".lightbox__post-description"
   );
-  console.log({ newImageFileName, newPostDescription });
   let fileIsAPhotography = newImageFileName.includes(".jpg");
 
   if (fileIsAPhotography) {

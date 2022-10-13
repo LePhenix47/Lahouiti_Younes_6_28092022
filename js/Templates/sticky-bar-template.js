@@ -33,7 +33,6 @@ class StickyBarTemplate {
   }
 
   updateStickyBar() {
-    console.log(this.photographerObject);
     const { amountOfLikesParagraph, amountOfLikes } = this.photographerObject;
     amountOfLikesParagraph.innerHTML = `${amountOfLikes} <i class="fa-solid fa-heart"></i>`;
   }

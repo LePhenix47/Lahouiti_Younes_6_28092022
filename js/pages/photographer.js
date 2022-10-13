@@ -10,7 +10,6 @@ class PhotographerApp {
   //Retrives the data from the JSON file
   main() {
     const photosData = this.usersDataApi.getPhotos();
-    console.log({ photosData });
     return photosData;
   }
 
@@ -113,8 +112,6 @@ const descriptionMetaTag = document.querySelector("meta[name=description]");
 //
 const launchPhotographerApp = new PhotographerApp().main();
 
-console.log(postsContainer);
-
 //
 let urlPhotographerId = Number(getUrlParameter("id"));
 
@@ -125,7 +122,6 @@ let arrayOfLikes = [];
 let amountOfLikes = 0;
 
 let profileData = {};
-console.log(launchPhotographerApp);
 //
 launchPhotographerApp.then((data) => {
   const { photographers, media } = data;

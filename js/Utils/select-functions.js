@@ -1,7 +1,6 @@
 function sortPostsForMobile() {
   let selectElement = this;
 
-  console.log(selectElement.value);
   //We take the current posts
   sortPosts(selectElement);
 }
@@ -12,8 +11,6 @@ function sortPostsForMobile() {
 
 */
 function sortPostsForWidescreens() {
-  console.log("click!");
-  console.log(this);
   const iconLabelContainer = document.querySelector(
     ".dropdown-menu__icon-container"
   );
@@ -56,9 +53,9 @@ function setItemName() {
 //This function sorts the posts, it takes in its parameters the element to extract its value
 function sortPosts(element) {
   //We take the current posts
-  let actualPosts = document.querySelectorAll(".images > *"); //⚠ NodeList → Array functions do not work with NodeLists
 
   let actualPostsDataArray = [];
+  let actualPosts = document.querySelectorAll(".images > *"); //⚠ NodeList → Array functions do not work with NodeLists
 
   for (post of actualPosts) {
     //This object will recollect all the cards in the container
@@ -79,7 +76,6 @@ function sortPosts(element) {
       id: post.getAttribute("data-post-id"),
     };
 
-    console.log({ HTMLTagOfImage });
     //If the post has as an <img/> as a thumbnail, we add its file name
     if (HTMLTagOfImage === "IMG") {
       actualPostsDataObject = {
@@ -113,6 +109,4 @@ function sortPosts(element) {
   photographerMediaArray = sortedArray;
   PhotographerApp.changeUIOfPosts(sortedArray, postsContainer);
   addPostFeatures();
-  console.log({ sortingProperty });
-  console.table(sortedArray);
 }
