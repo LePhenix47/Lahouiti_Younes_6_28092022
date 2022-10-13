@@ -11,11 +11,12 @@
 }
 
 
-// * {
-//     &:focus {
-//         box-shadow: 0px 0px 5px 5px var(--tab-shadow-color);
-//     }
-// }
+* {
+    &:focus-visible {
+        box-shadow: 0px 0px 5px 5px var(--tab-shadow-color);
+        z-index: 3;
+    }
+}
 
 html {
     scroll-behavior: smooth;

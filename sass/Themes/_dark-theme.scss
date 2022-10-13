@@ -2,6 +2,7 @@
 @media (prefers-color-scheme: dark) {
     //SASS Variables
     $body-bg-color: black;
+    $tab-shadow-color: darkblue;
 
     $text-color-secondary: lighten(#901C1C, 20%);
     $text-color-tertiary: white;
@@ -26,7 +27,7 @@
     :root {
         //Color variables
         --body-bg-color: #{$body-bg-color};
-
+        --tab-shadow-color: #{$tab-shadow-color};
         --text-color-primary:#{$text-color-primary};
         --text-color-secondary:#{$text-color-secondary};
         --text-color-tertiary:#{$text-color-tertiary};

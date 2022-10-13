@@ -324,7 +324,6 @@
         border-radius: var(--buttons-border-radius);
         max-width: 80%;
         max-height: 650px;
-        user-select: none;
 
         @include mobile-only {
             width: 70%;
