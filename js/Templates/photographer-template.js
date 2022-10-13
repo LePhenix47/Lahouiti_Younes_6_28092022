@@ -30,6 +30,7 @@ class PhotographerProfileTemplate {
     return profileTemplate;
   }
 
+  //Could've used a factory pattern here
   createPosts() {
     let postTemplate = "";
     let postsCards = "";
@@ -37,7 +38,8 @@ class PhotographerProfileTemplate {
     for (let card of this.cards) {
       const { id, photographerId, title, image, video, likes, date } = card;
 
-      if (image !== undefined) {
+      if (image) {
+        //If the image is defined
         postTemplate = `
         <div class="images__post-container" data-post-id="${id}" data-photographers-id="${photographerId}"
             data-publishing-date="${date}" data-likes="${likes}" data-user-liked="false" data-title="${title}">
