@@ -7,7 +7,7 @@ Sur ce dernier on peut liker ses posts, voir sa galerie d'image, trier les posts
 **CONTRAINTES TECHNIQUES:**
 
 1. Le projet doit séparer le code HTML, CSS et JS en différents fichiers
-2. Le projet doit _au moins_ une fois le factory pattern
+2. Le projet doit utiliser _au moins_ une fois le factory pattern
 3. ESLint est utilisé avec les paramètres par défaut
 4. Une version moderne de JavaScript ES6 ou supérieure est utilisée et
    les fonctionnalités obsolètes ne sont pas utilisées.
