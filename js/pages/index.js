@@ -1,7 +1,7 @@
 class IndexApp {
   constructor() {
     this.usersDataApi = new PhotographersApi(
-      window.location.href.includes("http://127.0.0.1:5500/")
+      window.location.origin.includes("http://127.0.0.1:5500")
         ? "http://127.0.0.1:5500/P6/workstation/data/photographers.json"
         : "./data/photographers.json"
     );
@@ -24,6 +24,5 @@ let cardsContainer = document.querySelector(".main__cards-container");
 
 launchApp.then((data) => {
   const { photographers, media } = data;
-  console.table(photographers);
   IndexApp.init(photographers, cardsContainer);
 });

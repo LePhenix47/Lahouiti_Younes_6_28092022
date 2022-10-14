@@ -49,28 +49,24 @@ class PhotographerApp {
     let sortedArray = [];
     switch (sortProperty) {
       case "titre": {
-        console.log("Sorting the array by its title: A → Z");
         sortedArray = arrayOfPosts.sort((post1, post2) => {
           return post1.title.localeCompare(post2.title);
         });
         break;
       }
       case "popularité": {
-        console.log("Sorting the array by its likes: Most → least");
         sortedArray = arrayOfPosts.sort((post1, post2) => {
           return post2.likes - post1.likes;
         });
         break;
       }
       case "date": {
-        console.log("Sorting the array by its date: Recent → oldest");
         sortedArray = arrayOfPosts.sort((post1, post2) => {
           return post2.date - post1.date;
         });
         break;
       }
     }
-    console.log({ sortedArray });
 
     return sortedArray;
   }
@@ -167,8 +163,6 @@ launchPhotographerApp.then((data) => {
   PhotographerApp.changeUIOfProfile(photographerObject, profileContainer);
 
   // PhotographerApp.changeUIOfPosts(photographerMediaArray, postsContainer);
-  console.table(photographerMediaArray);
-  //Doesn't work
   for (post of photographerMediaArray) {
     let postHasImageOrVideo = post.image !== undefined ? "image" : "video";
     PhotographerApp.changeUIOfPostsV2(
@@ -178,17 +172,9 @@ launchPhotographerApp.then((data) => {
     );
   }
 
-  console.dir(photographerObject);
-  console.table(photographerMediaArray);
-
-  console.table(arrayOfLikes);
-  console.log("Amount of likes = ", amountOfLikes);
-
   //Calling a function to add all the different event listeners
   addPostFeatures();
 });
-
-console.log("Id of photograph =", urlPhotographerId);
 
 //Function that adds all the different event listeners
 function addPostFeatures() {

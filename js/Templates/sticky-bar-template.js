@@ -4,8 +4,6 @@ class StickyBarTemplate {
   }
 
   createStickyBar() {
-    console.log("this.photographerObject = ", this.photographerObject);
-
     const {
       amountOfLikesParagraph,
       priceParagraph,

@@ -34,7 +34,6 @@ function sortPostsForWidescreens() {
   }
 
   const setItemNameAccessible = (event) => {
-    console.log(event.key);
     if (event.key === "Enter") {
       setItemName();
     }
@@ -51,10 +50,7 @@ function setItemName() {
   let buttonElement = document.querySelector(".dropdown-menu__sort-button");
 
   buttonElement.textContent = itemElement.innerText;
-  console.group("sorting for PCs");
-  console.log({ itemElement, buttonElement });
   sortPosts(buttonElement);
-  console.groupEnd("sorting for PCs");
   sortPostsForWidescreens();
 }
 
@@ -69,12 +65,9 @@ function sortPosts(element) {
 
   let actualPostsArray = Array.from(actualPostsNodeList);
 
-  console.log(actualPostsArray);
   for (post of actualPostsArray) {
     //This object will recollect all the cards in the container
-    console.log({ post });
     let imageOfPost = post.querySelector("a[href]").children[0];
-    console.log(imageOfPost);
 
     let HTMLTagOfImage = imageOfPost.tagName;
 
@@ -108,7 +101,6 @@ function sortPosts(element) {
     actualPostsDataArray.push(actualPostsDataObject);
   }
 
-  console.table(actualPostsDataArray);
   //Given the fact that we use a <button> AND also a <select>, the way to get their values is different
   //If it's a button → We get the innerText in lowercase
   //Otherwise we get the value of the option selected
@@ -135,5 +127,4 @@ function sortPosts(element) {
   }
 
   addPostFeatures();
-  actualPostsDataArray = [];
 }

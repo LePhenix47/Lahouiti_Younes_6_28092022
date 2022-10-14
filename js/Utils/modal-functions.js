@@ -214,19 +214,10 @@ function displayLightboxModal(e) {
     return post.title;
   });
 
-  console.table(arrayOfImageFileNames);
-
   //We give a value to our variables to get the URL, the file name and the description of the image
   imageUrl = e.currentTarget.children[0].getAttribute("src");
   imageFileName = imageUrl.split("/Posts photos/")[1];
   postDescription = e.currentTarget.getAttribute("title");
-
-  console.log(
-    "Index of image: ",
-    arrayOfImageFileNames.indexOf(imageFileName) < 0 ? "Not found" : "found!",
-    ", value = ",
-    arrayOfImageFileNames.indexOf(imageFileName)
-  );
 
   updateModalImage(imageFileName, postDescription);
   //
@@ -237,16 +228,7 @@ function displayLightboxModal(e) {
 
   const navigateImagesInModal = (event) => {
     if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
-      //If the user clicked on the modal
-      event.key === "ArrowLeft"
-        ? console.log(
-            "%cLeft",
-            "padding: 5px; color: black; background: yellow; font-size: 16px"
-          )
-        : console.log(
-            "%cRight",
-            "padding: 5px; color: white; background: blue; font-size: 16px"
-          );
+      //If the user hit a key to change image on the modal
       changeImage(
         arrayOfImageFileNames,
         imageFileName,
@@ -300,7 +282,6 @@ function changeImage(
   carouselInfo.actualIndex =
     arrayOfImageFileNames.indexOf(currentImageFileName);
 
-  console.table(arrayOfImageFileNames);
   if (typeof event !== "string") {
     carouselInfo.direction = event.currentTarget.children[0].classList.contains(
       "fa-chevron-left"
@@ -331,11 +312,6 @@ function changeImage(
 
   imageFileName = nextImageFileName;
   postDescription = nextPostDescription;
-
-  console.group("Carousel info + image & description of the next post");
-  console.log(carouselInfo);
-  console.log({ nextImageFileName, nextPostDescription });
-  console.groupEnd("Carousel info + image & description of the next post");
 
   updateModalImage(
     arrayOfImageFileNames[carouselInfo.nextIndex],
