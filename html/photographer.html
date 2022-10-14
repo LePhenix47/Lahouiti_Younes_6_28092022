@@ -120,7 +120,7 @@
 
 
     <!--   Modal window for the carousel   -->
-    <dialog class="lightbox__modal" role="dialog">
+    <dialog class="lightbox__modal" role="dialog" aria-label="Vue rapprochée de l'image">
       <div class="lightbox__content">
         <button type="button" class="lightbox__button-close-dialog"
           aria-label="Bouton pour fermer la boîte de dialogue">
@@ -193,8 +193,8 @@
             <option value="titre" class="option">Titre</option>
           </select>
           <!--      Will be displayed on widescreen devices      -->
-          <button class="dropdown-menu__sort-button" type="button" role="combobox" aria-expanded="false"
-            aria-level="Bouton pour ouvrir le menu déroulant">
+          <button class="dropdown-menu__sort-button" type="button" role="listbox" aria-expanded="false"
+            aria-level="Bouton pour ouvrir le menu déroulant" role="button" aria-haspopup="listbox">
             Popularité
           </button>
           <div class="dropdown-menu hide">
