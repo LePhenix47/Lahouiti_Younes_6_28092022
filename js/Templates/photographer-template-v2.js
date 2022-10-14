@@ -25,7 +25,7 @@ class PhotographerProfileTemplateV2 {
         </div>
 
               `;
-    return postTemplate;
+    return { postTemplate };
   }
 
   createPostVideo() {
@@ -57,6 +57,6 @@ class PhotographerProfileTemplateV2 {
 
               `;
 
-    return postTemplate;
+    return { postTemplate };
   }
 }

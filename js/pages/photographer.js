@@ -91,12 +91,7 @@ class PhotographerApp {
 
   static changeUIOfPostsV2(postObject, type, container) {
     let template = new PhotographerFactory(postObject, type);
-    console.log("TEMPLATE: ", template, typeof template);
-    console.log(
-      "%c" + JSON.stringify(template),
-      "font-size: 16px; padding: 10px; background: green"
-    );
-    container.innerHTML += JSON.stringify(template);
+    container.innerHTML += template.postTemplate;
   }
 
   static updateUIOfStickyBar(photographerObject) {
@@ -171,17 +166,17 @@ launchPhotographerApp.then((data) => {
   PhotographerApp.changeUIOfStickyBar(stickyBarData);
   PhotographerApp.changeUIOfProfile(photographerObject, profileContainer);
 
-  PhotographerApp.changeUIOfPosts(photographerMediaArray, postsContainer);
+  // PhotographerApp.changeUIOfPosts(photographerMediaArray, postsContainer);
   console.table(photographerMediaArray);
   //Doesn't work
-  // for (post of photographerMediaArray) {
-  //   let postHasImageOrVideo = post.image !== undefined ? "image" : "video";
-  //   PhotographerApp.changeUIOfPostsV2(
-  //     post,
-  //     postHasImageOrVideo,
-  //     postsContainer
-  //   );
-  // }
+  for (post of photographerMediaArray) {
+    let postHasImageOrVideo = post.image !== undefined ? "image" : "video";
+    PhotographerApp.changeUIOfPostsV2(
+      post,
+      postHasImageOrVideo,
+      postsContainer
+    );
+  }
 
   console.dir(photographerObject);
   console.table(photographerMediaArray);

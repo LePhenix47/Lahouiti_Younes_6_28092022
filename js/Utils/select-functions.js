@@ -33,8 +33,15 @@ function sortPostsForWidescreens() {
     eventIsNotWindow ? this.setAttribute("aria-expanded", "false") : "";
   }
 
+  const setItemNameAccessible = (event) => {
+    console.log(event.key);
+    if (event.key === "Enter") {
+      setItemName();
+    }
+  };
   for (item of dropdownMenuItems) {
     item.addEventListener("click", setItemName);
+    item.addEventListener("keypress", setItemNameAccessible);
   }
 }
 
@@ -44,7 +51,8 @@ function setItemName() {
   let buttonElement = document.querySelector(".dropdown-menu__sort-button");
 
   buttonElement.textContent = itemElement.innerText;
-  console.groupCollapsed("sorting for PCs");
+  console.group("sorting for PCs");
+  console.log({ itemElement, buttonElement });
   sortPosts(buttonElement);
   console.groupEnd("sorting for PCs");
   sortPostsForWidescreens();
@@ -55,11 +63,18 @@ function sortPosts(element) {
   //We take the current posts
 
   let actualPostsDataArray = [];
-  let actualPosts = document.querySelectorAll(".images > *"); //⚠ NodeList → Array functions do not work with NodeLists
+  let actualPostsNodeList = document.querySelectorAll(
+    ".images > *:not(template)"
+  ); //⚠ NodeList → Array functions do not work with NodeLists
 
-  for (post of actualPosts) {
+  let actualPostsArray = Array.from(actualPostsNodeList);
+
+  console.log(actualPostsArray);
+  for (post of actualPostsArray) {
     //This object will recollect all the cards in the container
+    console.log({ post });
     let imageOfPost = post.querySelector("a[href]").children[0];
+    console.log(imageOfPost);
 
     let HTMLTagOfImage = imageOfPost.tagName;
 
@@ -93,6 +108,7 @@ function sortPosts(element) {
     actualPostsDataArray.push(actualPostsDataObject);
   }
 
+  console.table(actualPostsDataArray);
   //Given the fact that we use a <button> AND also a <select>, the way to get their values is different
   //If it's a button → We get the innerText in lowercase
   //Otherwise we get the value of the option selected
@@ -107,8 +123,8 @@ function sortPosts(element) {
     sortingProperty
   );
   photographerMediaArray = sortedArray;
-  PhotographerApp.changeUIOfPosts(sortedArray, postsContainer);
-  /*
+  // PhotographerApp.changeUIOfPosts(sortedArray, postsContainer);
+  postsContainer.textContent = "";
   for (post of sortedArray) {
     let postHasImageOrVideo = post.image !== undefined ? "image" : "video";
     PhotographerApp.changeUIOfPostsV2(
@@ -117,6 +133,7 @@ function sortPosts(element) {
       postsContainer
     );
   }
-  */
+
   addPostFeatures();
+  actualPostsDataArray = [];
 }
