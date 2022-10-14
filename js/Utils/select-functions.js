@@ -10,6 +10,13 @@ function sortPostsForMobile() {
   For widescreens
 
 */
+
+const setItemNameAccessible = (event) => {
+  if (event.key === "Enter") {
+    setItemName(event.target);
+  }
+};
+
 function sortPostsForWidescreens() {
   const iconLabelContainer = document.querySelector(
     ".dropdown-menu__icon-container"
@@ -33,25 +40,29 @@ function sortPostsForWidescreens() {
     eventIsNotWindow ? this.setAttribute("aria-expanded", "false") : "";
   }
 
-  const setItemNameAccessible = (event) => {
-    if (event.key === "Enter") {
-      setItemName();
-    }
-  };
   for (item of dropdownMenuItems) {
     item.addEventListener("click", setItemName);
     item.addEventListener("keypress", setItemNameAccessible);
   }
 }
 
-function setItemName() {
-  let itemElement = this;
+function setItemName(elementForScreenReaders) {
+  let itemElement = this.window ? elementForScreenReaders : this;
 
   let buttonElement = document.querySelector(".dropdown-menu__sort-button");
 
   buttonElement.textContent = itemElement.innerText;
   sortPosts(buttonElement);
   sortPostsForWidescreens();
+
+  const dropdownMenuItems = document.querySelectorAll(
+    ".dropdown-menu__list-item"
+  ); //⚠ NodeList
+
+  for (item of dropdownMenuItems) {
+    item.removeEventListener("click", setItemName);
+    item.removeEventListener("keypress", setItemNameAccessible);
+  }
 }
 
 //This function sorts the posts, it takes in its parameters the element to extract its value
