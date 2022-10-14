@@ -91,11 +91,12 @@ class PhotographerApp {
 
   static changeUIOfPostsV2(postObject, type, container) {
     let template = new PhotographerFactory(postObject, type);
+    console.log("TEMPLATE: ", template, typeof template);
     console.log(
       "%c" + JSON.stringify(template),
       "font-size: 16px; padding: 10px; background: green"
     );
-    container.innerHTML += template;
+    container.innerHTML += JSON.stringify(template);
   }
 
   static updateUIOfStickyBar(photographerObject) {
@@ -172,15 +173,15 @@ launchPhotographerApp.then((data) => {
 
   PhotographerApp.changeUIOfPosts(photographerMediaArray, postsContainer);
   console.table(photographerMediaArray);
-  //
-  for (post of photographerMediaArray) {
-    let postHasImageOrVideo = post.image !== undefined ? "image" : "video";
-    PhotographerApp.changeUIOfPostsV2(
-      post,
-      postHasImageOrVideo,
-      postsContainer
-    );
-  }
+  //Doesn't work
+  // for (post of photographerMediaArray) {
+  //   let postHasImageOrVideo = post.image !== undefined ? "image" : "video";
+  //   PhotographerApp.changeUIOfPostsV2(
+  //     post,
+  //     postHasImageOrVideo,
+  //     postsContainer
+  //   );
+  // }
 
   console.dir(photographerObject);
   console.table(photographerMediaArray);
@@ -207,6 +208,7 @@ function addPostFeatures() {
 
   //Code for the contact modal
   contactButton.addEventListener("click", displayContactModal);
+  contactButton.addEventListener("touchstart", displayContactModal); //For mobile devices
 
   //Code to sort the posts
   //1. For mobile devices
@@ -225,6 +227,7 @@ function addPostFeatures() {
   for (post of postsCardArray) {
     const linkToOpenModal = post.querySelector("a[href]");
     linkToOpenModal.addEventListener("click", displayLightboxModal);
+    linkToOpenModal.addEventListener("touchstart", displayLightboxModal); //For mobile devices
 
     const likeButton = post.querySelector(".images__post-like-button");
     likeButton.addEventListener("click", addLikeToPost);

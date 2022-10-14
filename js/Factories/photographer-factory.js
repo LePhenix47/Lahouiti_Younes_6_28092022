@@ -1,11 +1,9 @@
 class PhotographerFactory {
-  constructor(card, type) {
+  constructor(cardObject, type) {
     if (type === "video") {
-      console.log("Type is a video");
-      return new PhotographerProfileTemplateV2(card).createPostVideo();
+      return new PhotographerProfileTemplateV2(cardObject).createPostVideo();
     } else if (type === "image") {
-      console.log("Type is an image");
-      return new PhotographerProfileTemplateV2(card).createPostImage();
+      return new PhotographerProfileTemplateV2(cardObject).createPostImage();
     } else {
       throw "Photographer factory error: unknown type format";
     }

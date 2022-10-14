@@ -25,7 +25,6 @@ class PhotographerProfileTemplateV2 {
         </div>
 
               `;
-    console.log(postTemplate);
     return postTemplate;
   }
 
@@ -58,8 +57,6 @@ class PhotographerProfileTemplateV2 {
 
               `;
 
-    console.log(postTemplate);
     return postTemplate;
   }
-  //
 }
