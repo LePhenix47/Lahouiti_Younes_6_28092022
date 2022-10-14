@@ -80,7 +80,7 @@ function handleInputs() {
 
   let inputNameAttribute = inputElement.getAttribute("name");
 
-  const containerOfInput = inputElement.parentElement;
+  const containerOfInput = inputElement.closest(".contact__fieldset-section");
 
   let errorParagraph = containerOfInput.querySelector(
     ".contact__error-message"
@@ -153,7 +153,6 @@ function handleInputs() {
       break;
     }
   }
-  console.log(formBuilder);
 }
 
 function validateInput(inputElement, inputValueIsValid) {

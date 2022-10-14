@@ -4,8 +4,8 @@ function addLikeToPost() {
   console.log("click");
   let likeButton = this;
 
-  const postCard = this.parentElement.parentElement.parentElement;
-  console.log(postCard);
+  const postCard = this.closest(".images__post-container");
+  console.log({ postCard });
 
   let likeButtonHasAlreadyBeenPressed =
     likeButton.classList.contains("active-like");
