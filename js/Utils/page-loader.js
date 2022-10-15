@@ -4,4 +4,4 @@ setTimeout(() => {
   pageLoaderElement.setAttribute("aria-live", "off");
   pageLoaderElement.setAttribute("tab-index", "-1");
   pageLoaderElement.classList.add("hide");
-}, 2000);
+}, 3000);

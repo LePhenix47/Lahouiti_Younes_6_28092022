@@ -12,7 +12,7 @@ class PhotographerProfileTemplateV2 {
           data-publishing-date="${date}" data-likes="${likes}" data-user-liked="false" data-title="${title}">
           <div class="images__post">
             <a href="#" title="${title}" aria-label="Image nommée ${title}" role="link" tabindex="0">
-              <img class="images__image" src="../assets/images/Posts photos/${image}"
+              <img class="images__image" src="../assets/images/Posts photos/images/${image}"
                 alt="'${title}' fait en ${new Date(date).getFullYear()}" />
             </a>
             <div class="images__post-text">
@@ -42,7 +42,7 @@ class PhotographerProfileTemplateV2 {
             <a href="#" title="${title}" aria-label="Video nommée ${title} fait en ${new Date(
       date
     ).getFullYear()}" role="link" tabindex="0">
-              <video src="../assets/images/Posts photos/${video}" class="images__video">
+              <video src="../assets/images/Posts photos/videos/${video}" class="images__video">
               </video>
             </a>
             <div class="images__post-text">
