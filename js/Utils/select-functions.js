@@ -29,15 +29,21 @@ function sortPostsForWidescreens() {
     ".dropdown-menu__list-item"
   ); //⚠ NodeList
 
+  const sortButton = document.querySelector(".dropdown-menu__sort-button");
+
   let dropDownMenuNotOpened = dropDownMenu.classList.contains("hide");
   if (dropDownMenuNotOpened) {
     dropDownMenu.classList.remove("hide");
     iconLabelContainer.classList.add("active-sort-button-icon");
-    eventIsNotWindow ? this.setAttribute("aria-expanded", "true") : "";
+    eventIsNotWindow
+      ? this.setAttribute("aria-expanded", "true")
+      : sortButton.setAttribute("aria-expanded", "true");
   } else {
     dropDownMenu.classList.add("hide");
     iconLabelContainer.classList.remove("active-sort-button-icon");
-    eventIsNotWindow ? this.setAttribute("aria-expanded", "false") : "";
+    eventIsNotWindow
+      ? this.setAttribute("aria-expanded", "false")
+      : sortButton.setAttribute("aria-expanded", "false");
   }
 
   for (item of dropdownMenuItems) {

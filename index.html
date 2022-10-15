@@ -30,6 +30,9 @@
   <!-- APIs   -->
   <script defer src="./js/Apis/photographers-api.js"></script>
 
+  <!-- Utilities   -->
+  <script defer src="./js/Utils/page-loader.js"></script>
+
   <!-- Templates   -->
   <script defer src="./js/Templates/user-card-template.js"></script>
 
@@ -41,8 +44,8 @@
 
 <body>
   <!-- Page loader   -->
-  <div class="page-loader" aria-label="La page est en cours de chargement, veuillez ne pas la recharger"
-    aria-live="polite" tabindex="-1">
+  <div class="page-loader" aria-label="La page est en cours de chargement, veuillez ne pas la recharger" tabindex="0"
+    aria-live="polite" role="status">
     <div class="page-loader__circle"></div>
     <div class="page-loader__circle"></div>
     <div class="page-loader__circle"></div>

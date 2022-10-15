@@ -36,6 +36,7 @@
   <script defer src="../js/Utils/get-parameters.js"></script>
   <script defer src="../js/Utils/like-functions.js"></script>
   <script defer src="../js/Utils/select-functions.js"></script>
+  <script defer src="../js/Utils/page-loader.js"></script>
 
   <!-- Builders   -->
   <script defer src="../js/Builders/contact-form-builder.js"></script>
@@ -55,8 +56,8 @@
 
 <body>
   <!-- Page loader   -->
-  <div class="page-loader" aria-label="La page est en cours de chargement, veuillez ne pas la recharger" tabindex="-1"
-    aria-live="polite">
+  <div class="page-loader" aria-label="La page est en cours de chargement, veuillez ne pas la recharger" tabindex="0"
+    aria-live="polite" role="status">
     <div class="page-loader__circle"></div>
     <div class="page-loader__circle"></div>
     <div class="page-loader__circle"></div>
@@ -86,7 +87,7 @@
     <dialog class="contact__modal" role="dialog" aria-labelledby="photographers-name">
       <div class="contact__modal-content">
         <div class="contact__title-button">
-          <h1 class="contact__title" id="photographers-name">Contactez-moi <br />
+          <h1 class="contact__title" id="photographers-name" tabindex="0">Contactez-moi <br />
             [NOM] [PRÉNOM]
           </h1>
           <button type="button" class="contact__button-close-dialog"><i
@@ -207,7 +208,7 @@
           </select>
           <!--      Will be displayed on widescreen devices      -->
           <button class="dropdown-menu__sort-button" type="button" role="listbox" aria-expanded="false"
-            aria-level="Bouton pour ouvrir le menu déroulant" role="button" aria-haspopup="listbox">
+            aria-level="Bouton pour ouvrir le menu déroulant" role="button">
             Popularité
           </button>
           <div class="dropdown-menu hide">
