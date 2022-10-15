@@ -89,7 +89,7 @@ function handleInputs() {
   let valueIsOverTwoCharsLong = valueOfInput.length >= 2;
   let valueIsOverTenCharsLong = valueOfInput.length >= 10;
 
-  let emailRegex =
+  const emailRegex =
     /^([a-z A-Z 0-9\.-]+)@([a-z A-Z 0-9]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/;
   switch (inputNameAttribute) {
     case "name": {
@@ -216,7 +216,10 @@ function displayLightboxModal(e) {
 
   //We give a value to our variables to get the URL, the file name and the description of the image
   imageUrl = e.currentTarget.children[0].getAttribute("src");
-  imageFileName = imageUrl.split("/Posts photos/")[1];
+  imageFileName = imageUrl.split("/Posts photos/images")[1]
+    ? imageUrl.split("/Posts photos/images")[1]
+    : imageUrl.split("/Posts photos/videos")[1];
+
   postDescription = e.currentTarget.getAttribute("title");
 
   updateModalImage(imageFileName, postDescription);
@@ -336,7 +339,7 @@ function updateModalImage(newImageFileName, newPostDescription) {
     imageElement.setAttribute("alt", `Photo nommée '${newPostDescription}'`);
     imageElement.setAttribute(
       "src",
-      `../assets/images/Posts photos/${newImageFileName}`
+      `../assets/images/Posts photos/images/${newImageFileName}`
     );
   } else {
     //Element to be hidden
@@ -346,7 +349,7 @@ function updateModalImage(newImageFileName, newPostDescription) {
     videoElement.setAttribute("alt", `Vidéo nommée '${newPostDescription}'`);
     videoElement.setAttribute(
       "src",
-      `../assets/images/Posts photos/${newImageFileName}`
+      `../assets/images/Posts photos/videos/${newImageFileName}`
     );
   }
 
