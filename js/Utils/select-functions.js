@@ -95,7 +95,6 @@ function sortPosts(element) {
       ? imageOfPost.getAttribute("src").split("/Posts photos/images")[1]
       : imageOfPost.getAttribute("src").split("/Posts photos/videos")[1];
 
-    console.log({ thumbnailName });
     let actualPostsDataObject = {
       title: post.getAttribute("data-title"),
       likes: Number(post.getAttribute("data-likes")),

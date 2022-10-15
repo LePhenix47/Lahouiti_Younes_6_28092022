@@ -216,9 +216,9 @@ function displayLightboxModal(e) {
 
   //We give a value to our variables to get the URL, the file name and the description of the image
   imageUrl = e.currentTarget.children[0].getAttribute("src");
-  imageFileName = imageUrl.split("/Posts photos/images")[1]
-    ? imageUrl.split("/Posts photos/images")[1]
-    : imageUrl.split("/Posts photos/videos")[1];
+  imageFileName = imageUrl.split("/Posts photos/images/")[1]
+    ? imageUrl.split("/Posts photos/images/")[1]
+    : imageUrl.split("/Posts photos/videos/")[1];
 
   postDescription = e.currentTarget.getAttribute("title");
 
@@ -284,7 +284,6 @@ function changeImage(
 ) {
   carouselInfo.actualIndex =
     arrayOfImageFileNames.indexOf(currentImageFileName);
-
   if (typeof event !== "string") {
     carouselInfo.direction = event.currentTarget.children[0].classList.contains(
       "fa-chevron-left"
